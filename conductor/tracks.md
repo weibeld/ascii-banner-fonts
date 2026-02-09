@@ -15,5 +15,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [ ] **Track: Font Consistency & Quality Audit**
   *Description: Perform a comprehensive audit of the entire font collection. Investigate fonts that produce no visible output (e.g., due to corrupt files or unprintable characters). Fix issues where possible, or omit inconsistent fonts to ensure a high-quality user experience.*
 
-- [ ] **Track: Local Assets Strategy Research & Evaluation**
-  *Description: Evaluate the pros and cons of sourcing assets (fonts, libraries) from original sources vs. maintaining local copies. Investigate synchronisation mechanisms to keep local copies up-to-date with upstream changes.*
+- [x] **Track: Local Assets Strategy Research & Evaluation**
+  *Link: [./tracks/asset_strategy_20260209/](./tracks/asset_strategy_20260209/)*
+
+- [ ] **Track: Implement Asset Synchronization & UI Version Display**
+  *Description: Implement the monthly GitHub Action to synchronize fonts and library from `patorjk/figlet.js`. Add the current version display to the application UI.*
