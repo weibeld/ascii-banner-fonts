@@ -28,6 +28,11 @@ download-fonts:
 	@echo "Downloading fonts..."
 	@./venv/bin/python scripts/download_fonts.py
 
+# Archive a completed track (Usage: make archive TRACK=track_id)
+archive:
+	@if [ -z "$(TRACK)" ]; then echo "Error: Please specify TRACK=track_id"; exit 1; fi
+	@python3 scripts/archive_track.py $(TRACK)
+
 # Clean up
 clean:
 	@echo "Cleaning up..."

@@ -84,6 +84,20 @@ All tasks follow a strict lifecycle:
 
 8.  **Announce Completion:** Inform the user that the phase is complete and the checkpoint has been created, with the detailed verification report attached as a git note.
 
+## Track Completion & Archiving
+
+Once all tasks in a track's implementation plan are marked as complete and the project documentation has been synchronised, the track must be archived to maintain a clean workspace.
+
+1.  **Archiving Command:** Use the provided automation to archive the track:
+    ```bash
+    make archive TRACK=<track_id>
+    ```
+2.  **What it Does:**
+    -   Moves the track folder from `conductor/tracks/` to `conductor/archive/` using `git mv` to preserve file history.
+    -   Automatically removes the track's entry from the active registry in `conductor/tracks.md`.
+    -   Stages the changes for commit.
+3.  **Final Commitment:** After running the archive command, commit the changes with a message like `chore(conductor): Archive track '<track_description>'`.
+
 ## Quality Gates
 
 Before marking any task complete, verify:
