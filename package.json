@@ -1,0 +1,19 @@
+{
+  "name": "ascii-banner-fonts",
+  "version": "1.0.0",
+  "description": "ASCII Banner Font Showcase",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run copy-fonts && tsc && vite build",
+    "preview": "vite preview",
+    "copy-fonts": "node scripts/copy-fonts.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "figlet": "^1.8.0"
+  }
+}

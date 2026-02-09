@@ -74,3 +74,16 @@ Instead of manual execution, we will implement a GitHub Action to handle synchro
 
 ### Expansion to Other Sources
 If we later add fonts from `xero/figlet-fonts`, we will treat them as a "static" secondary collection. Since that repo has no releases and low activity, a simple manual sync script (run once or twice a year) is sufficient.
+
+---
+
+## 4. Settled Solution: Modern Stack Migration (NPM + Vite + TS)
+
+Following further research and evaluation, we have migrated the project to a modern stack that elegantly fulfills the **Local Maintenance** strategy.
+
+### Final Implementation Mechanism
+- **Package Management:** The library is managed as a standard NPM dependency (`figlet`).
+- **Asset Sync:** A Node.js script (`scripts/copy-fonts.js`) replaces complex ZIP/API logic. It copies fonts directly from `node_modules` into source-specific subdirectories (e.g., `public/fonts/patorjk/`).
+- **Manifest Discovery:** The copy script generates a `fonts.json` manifest. This removes the need for brittle directory listing, making the app truly static and compatible with any host.
+- **Monthly Automation:** The GitHub Action is simplified to `npm update figlet` followed by the copy script and an automated PR.
+- **UI Attribution:** The version number is read directly from the `figlet` package's `package.json` and displayed in the frontend, ensuring clear provenance (e.g., `patorjk/figlet.js v1.10.0`).
