@@ -7,13 +7,25 @@
 3. **User Experience First:** Every decision should prioritize user experience
 4. **Non-Interactive & CI-Aware:** Prefer non-interactive commands. Use `CI=true` for watch-mode tools (linters) to ensure single execution.
 
+## Todo List Management
+
+The `conductor/todo.md` file serves as a catch-all for miscellaneous tasks, bugs, and technical debt.
+
+1.  **Adding Items:** Users can add items to the "Backlog" section at any time.
+2.  **Track Integration:** 
+    -   **Start of Track:** When selecting a track, the agent must check `todo.md` for any items relevant to the chosen track and propose adding them to the track's plan.
+    -   **End of Track:** Before finalizing a track, the agent should check if any completed work resolves items in the backlog. If so, move them to "Done" and **append the resolving track ID** (e.g., `- Item description [track_id_20260101]`).
+3.  **Cleanup Tracks:** If the backlog grows large, create a specific "Technical Debt / Cleanup" track to bundle and resolve multiple items at once.
+
 ## Task Workflow
 
 All tasks follow a strict lifecycle:
 
 ### Standard Task Workflow
 
-1. **Select Task:** Choose the next available task from `plan.md` in sequential order
+1. **Select Track & Check Todo:** 
+   - Choose the next available track from `tracks.md`.
+   - **Check `conductor/todo.md`** for any relevant backlog items to include.
 
 2. **Mark In Progress:** Before beginning work, edit `plan.md` and change the task from `[ ]` to `[~]`
 
