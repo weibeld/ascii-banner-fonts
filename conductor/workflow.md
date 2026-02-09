@@ -90,7 +90,7 @@ Once all tasks in a track's implementation plan are marked as complete and the p
 
 1.  **Archiving Command:** Use the provided automation to archive the track:
     ```bash
-    make archive TRACK=<track_id>
+    ./conductor/scripts/archive_track.sh <track_id>
     ```
 2.  **What it Does:**
     -   Moves the track folder from `conductor/tracks/` to `conductor/archive/` using `git mv` to preserve file history.
