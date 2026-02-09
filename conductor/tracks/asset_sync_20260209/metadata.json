@@ -1,0 +1,8 @@
+{
+  "track_id": "asset_sync_20260209",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-09T22:30:00Z",
+  "updated_at": "2026-02-09T22:30:00Z",
+  "description": "Implement Asset Synchronization & UI Version Display"
+}
