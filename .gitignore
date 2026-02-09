@@ -1,0 +1,9 @@
+# Local Environment
+venv/
+.DS_Store
+*.log
+
+# Assets (Downloaded fonts and library)
+# We track the scripts to download them, but not the hundreds of large .flf files
+public/fonts/*.flf
+src/js/lib/figlet.min.js
