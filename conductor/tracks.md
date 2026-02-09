@@ -18,6 +18,3 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./tracks/font_audit_20260209/](./tracks/font_audit_20260209/)*
   *Description: Perform a comprehensive audit of the entire font collection. Investigate fonts that produce no visible output (e.g., due to corrupt files or unprintable characters). Fix issues where possible, or omit inconsistent fonts to ensure a high-quality user experience.*
 
-- [x] **Track: Implement Asset Synchronization & UI Version Display**
-  *Link: [./tracks/asset_sync_20260209/](./tracks/asset_sync_20260209/)*
-  *Description: Implement the monthly GitHub Action to synchronize fonts and library from `patorjk/figlet.js`. Add the current version display to the application UI.*

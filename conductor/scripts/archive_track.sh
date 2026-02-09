@@ -17,68 +17,47 @@ DEST_PATH="${ARCHIVE_DIR}/${TRACK_ID}"
 
 # 1. Validate paths
 if [ ! -d "$SOURCE_PATH" ]; then
-  echo "Error: Track directory '${SOURCE_PATH}' does not exist."
-  exit 1
+  # If it's already moved, we might just need to cleanup the registry
+  if [ -d "$DEST_PATH" ]; then
+    echo "Track already moved to archive. Proceeding with registry cleanup."
+  else
+    echo "Error: Track directory '${SOURCE_PATH}' does not exist."
+    exit 1
+  fi
+else
+  if [ ! -d "$ARCHIVE_DIR" ]; then
+    mkdir -p "$ARCHIVE_DIR"
+  fi
+  # 2. Git Move (Preserves history)
+  echo "Archiving ${SOURCE_PATH} to ${DEST_PATH}..."
+  git mv "$SOURCE_PATH" "$DEST_PATH"
 fi
-
-if [ ! -d "$ARCHIVE_DIR" ]; then
-  mkdir -p "$ARCHIVE_DIR"
-fi
-
-# 2. Git Move (Preserves history)
-echo "Archiving ${SOURCE_PATH} to ${DEST_PATH}..."
-git mv "$SOURCE_PATH" "$DEST_PATH"
 
 # 3. Update Registry (conductor/tracks.md)
-# We use sed to delete the block.
-# The pattern looks for the line containing the track ID and the preceding lines up to "- [ ] **Track:"
-# This is tricky with sed. A simpler approach for the registry format we have:
-# Find the line with the link to the track, and the line before it (the title), and delete them.
-# The format is:
-# - [ ] **Track: ...**
-#   *Link: ...*
-
 echo "Removing entry from ${REGISTRY_FILE}..."
-
-# Create a temp file
-TMP_FILE="${REGISTRY_FILE}.tmp"
-
-# We read the file line by line. If we find the track ID in a link, we skip that line 
-# AND we assume the previous line was the title, so we need a way to not print it.
-# A robust way in bash is to read the whole file into memory or use python/node. 
-# Since we want to avoid deps, let's use a simple node one-liner since we will have node.
 
 node -e "
 const fs = require('fs');
-const trackId = '${TRACK_ID}';
-const lines = fs.readFileSync('${REGISTRY_FILE}', 'utf8').split('
-');
+const trackId = process.argv[1];
+const registryFile = process.argv[2];
+const lines = fs.readFileSync(registryFile, 'utf8').split('\n');
 const out = [];
-let skip = false;
-
 for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    // Check if this line is a track title start
     if (line.trim().startsWith('- [') && line.includes('**Track:')) {
-        // Look ahead for the link
         if (i + 1 < lines.length && lines[i+1].includes(trackId)) {
-            // Found our track block. Skip this line and the next one (the link)
-            // Also skip potentially empty lines or context lines if they exist? 
-            // The current format is strict: Title line, then Link line.
-            // Let's just skip these two.
+            console.log('Found entry for ' + trackId + '. Skipping...');
             i++; 
-            console.log('Removed registry entry for ' + trackId);
+            while (i + 1 < lines.length && lines[i+1].trim() !== '' && !lines[i+1].startsWith('---') && !lines[i+1].startsWith('- [') && !lines[i+1].startsWith('#')) {
+                i++;
+            }
             continue;
         }
     }
-    // Also handle the case where the context/description lines follow
-    // If we just skipped the title/link, we might want to skip subsequent indented lines?
-    // For now, the simple Title+Link removal is safe for the standard format.
     out.push(line);
 }
-fs.writeFileSync('${REGISTRY_FILE}', out.join('
-'));
-"
+fs.writeFileSync(registryFile, out.join('\n'));
+" "$TRACK_ID" "$REGISTRY_FILE"
 
 # 4. Stage Registry Change
 git add "$REGISTRY_FILE"
