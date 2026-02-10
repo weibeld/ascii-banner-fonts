@@ -2,70 +2,122 @@
 
 This document defines the architectural strategy for managing external assets (font files and the FIGlet library) in ASCII Banners.
 
-## 1. Premise: The NPM Source of Truth
+## 1. Premise: Sourcing Requirements
 
-We use the official `figlet` NPM package as the single authoritative source for both the rendering engine and the core font library.
+### FIGlet Library (`figlet.js`)
+The library rendering engine logic is best obtained via **NPM**.
+- **Reason:** Sourcing the correct browser-compatible bundle directly from GitHub source or release zips proved unreliable and complex. `npm install` provides a deterministic, production-ready artifact.
 
-### Why NPM?
-We investigated multiple sourcing methods:
-- **GitHub Repository (Source):** Requires a complex build toolchain to generate the production artifacts from TypeScript source.
-- **GitHub Release (Zip):** Inconsistent structure across versions; often lacks the final minified distribution files.
-- **CDN (jsDelivr):** While accessible, it introduces an external runtime dependency and fragility if URL patterns change.
-
-**Conclusion:** `npm install` is the only robust, officially supported method to obtain the complete, production-ready set of assets (library + fonts) in a deterministic state.
+### Fonts (`.flf` files)
+Font files are static text assets.
+- **Sourcing:** They *can* be obtained from NPM (conveniently bundled with the library) or downloaded directly from upstream Git repositories.
+- **Constraint:** We strictly require these files to be available on *our* domain at runtime to avoid CORS issues and reliance on external uptime.
 
 ---
 
-## 2. Asset Sourcing Models
+## 2. Architectural Models
 
-Given that `npm install` provides the raw materials, we evaluated two architectural models for integrating them into our application.
+We evaluated three distinct models for managing these assets from development to deployment.
 
-### Model 1: Full Repo-Based (Contained)
+### Model 1: Full Repo-Based ("Batteries Included")
 The repository contains every asset required to run the application. It is a "sealed" unit.
 
 **Workflow:**
-1.  **Extraction:** A developer (or bot) runs `npm install`, then a script copies the relevant files from `node_modules` to tracked directories (`src/lib/`, `public/fonts/`).
-2.  **Commitment:** These copied assets are committed to the Git repository.
-3.  **Deployment:** The host serves the files directly. No build process is required on the production server.
+1.  **Dev:** Developer runs `npm install`. A script extracts assets into `assets/`.
+2.  **Commit:** These assets are **committed** to the Git repository.
+3.  **Deploy:** **Zero-Build Deployment.** GitHub Pages can serve the repo content directly.
 
-### Model 2: Full CI-Based (Lean)
-The repository contains only source code and configuration. Assets are ephemeral.
+**Rationale:**
+- **Portability:** You can clone the repo and run it offline immediately.
+- **Independence:** The repo is the single source of truth. It doesn't break if NPM goes down during a deploy.
+
+**The "Babysitting" Disadvantage:**
+The major drawback of Model 1 is the high maintenance cost. You must "babysit" hundreds of files (300+ fonts, library, manifest) across every environment: local development, production, CI runners, and test servers. Every minor version update triggers massive Git diffs and requires careful synchronization to prevent drift.
+
+### Model 2: Full CI-Based ("Lean Repo")
+The repository contains only source code and configuration. Assets are treated as "build artifacts".
 
 **Workflow:**
-1.  **Exclusion:** `node_modules` and `public/fonts/` are ignored by Git.
-2.  **Deployment:** The CI pipeline (GitHub Actions) runs `npm install` and `npm run build` to generate the assets on the fly before deploying the result.
+1.  **Dev:** Assets are downloaded locally for development but are **ignored by Git**.
+2.  **Commit:** Only code and config are committed.
+3.  **Deploy (CI):** The CI runner (GitHub Actions) performs a fresh `npm install`, extracts assets, and builds the production site on the fly.
+
+**Rationale (Industry Best Practice):**
+- **Repo Health:** Prevents the Git repository from growing massive over time due to binary blobs or duplicated data.
+- **Separation of Concerns:** Strictly separates "Source Code" (human-written) from "Artifacts" (generated/upstream data).
+- **Gold vs. Trash:** Model 2 clearly distinguishes between "Gold" (Source code and Version Manifest) and "Trash" (ephemeral artifacts). We can discard artifacts at any time and regenerate them perfectly from the "Gold" in seconds.
+
+### Model 3: Direct Upstream ("CDN Dependent")
+The application fetches assets from third-party servers at runtime.
+
+**Status:** **Rejected.** This introduces fragility, privacy concerns, and potential CORS issues.
 
 ---
 
-## 3. Detailed Comparison & Evaluation
+## 3. Selected Implementation (Model 2)
 
-| Feature | Model 1 (Full Repo) | Model 2 (Full CI) |
-| :--- | :--- | :--- |
-| **Repo Size** | Larger (Includes binary fonts) | Tiny (Code only) |
-| **Self-Sufficiency** | **Total.** Can run offline or from a USB stick immediately after cloning. | **Low.** Requires internet, NPM registry, and a build environment to run. |
-| **Robustness** | **High.** Deployment cannot fail due to NPM outages or upstream changes. | **Medium.** Deployment breaks if NPM is down or packages vanish. |
-| **Mixed Sources** | **Simple.** Non-NPM fonts (e.g., `xero`) are treated exactly the same way (committed files). | **Complex.** Requires custom CI logic to fetch/build each non-NPM source. |
-| **Auditability** | Changes to fonts are visible in Git history. | Font changes are invisible "magic" during deployment. |
+For **ASCII Banners**, we strictly follow **Model 2**.
+
+### Component 1: FIGlet Library
+- **Nature:** Dependency included via `npm install figlet`.
+- **Integration:** Directly imported in `src/main.ts`. The build system (Vite) bakes this logic right into the production application code bundle.
+
+### Component 2: Font Collections
+- **Nature:** External static assets (currently specifically the **patorjk collection**).
+- **Acquisition:** Extracted via `npm pack figlet` (or other collection-specific methods) at build time.
+- **Runtime:** These are served through separate URL requests on demand. They are **never** bundled into the JS code.
+
+### Component 3: Font Manifest (`fonts.json`)
+- **Nature:** Derived metadata generated at build time into `src/generated/fonts.json`.
+- **Integration:** Bundled by Vite directly into the production application code.
+- **Role:** Used by the app at runtime to perform instantaneous lookups of font data and categories.
+
+### Component 4: Version Manifest (`versions.json`)
+- **Nature:** The authoritative source of truth for core dependencies not tracked elsewhere.
+- **Role:** Pins the specific versions for the FIGlet Library (Component 1) and every font collection (Component 2).
 
 ---
 
-## 4. Selected Strategy: Model 1 (Full Repo-Based)
+## 4. Lifecycle & Workflows
 
-For **ASCII Banners**, we strictly follow **Model 1**.
+### Core NPM Scripts
+- `npm run setup`: The "one-stop-shop" command. It performs `npm install`, acquires all Font Collections, and generates the Font Manifest.
+- `npm run dev`: Starts the local development environment (Vite).
+- `npm run build`: Compiles the production application bundle into the `dist/` directory.
 
-### Implementation Details
-- **Library:** The `figlet` library is bundled/copied to `src/js/lib/` and committed.
-- **Fonts:** Font files are extracted to `public/fonts/patorjk/` and committed.
-- **Manifest:** A `fonts.json` file is generated and committed to allow the frontend to discover assets without server-side listing.
+### Workflow Details
 
-### Automated Maintenance (The "Robot Maintainer")
-While the assets are committed, we automate their maintenance (version update) to prevent drift:
-- **Mechanism:** A GitHub Action runs periodically (e.g., monthly).
+#### Dev Workflow
+1.  **Synchronize:** Developer runs `npm run setup`. This ensures that `node_modules` and all local ephemeral assets (Fonts, Fonts Manifest) are in sync with the current `versions.json`.
+2.  **Develop:** Developer runs `npm run dev` to work on the application with a full local set of assets.
+
+#### Repository Storage
+The repository on GitHub stores only the "Gold":
+- Handwritten source code (`src/*.ts`, `src/*.css`).
+- Build configuration and scripts.
+- The **Version Manifest** (`versions.json`).
+- All ephemeral artifacts (`public/fonts/`, `src/generated/`) are strictly excluded via `.gitignore`.
+
+#### Deploy Workflow (CI/CD)
+1.  **Acquisition:** The CI runner starts from a clean slate and runs `npm run setup`. 
+2.  **Build:** The CI runner runs `npm run build` to produce the production `dist/` folder.
+3.  **Serve:** The `dist/` artifact is uploaded and served by GitHub Pages.
+
+### Automation: The Maintenance Bot
+A dedicated GitHub Action runs periodically to ensure the project doesn't fall behind upstream updates.
 - **Process:**
-    1. Checks for a new version of the upstream `figlet` package
-    2. If there is a new version:
-       1.  Runs `npm update`.
-       2.  Runs the extraction script (extracts assets into repository).
-       3.  Commits the extracted assets and opens a **Pull Request**.
-    3. If there is no new version, does nothing
-- **Result:** The developer simply merges the PR to "ingest" the new upstream version into the repository.
+    1. **Check:** Queries NPM and other sources for new versions of the FIGlet Library or Font Collections.
+    2. **Update:** If a newer version is found, the bot updates the relevant string in `versions.json`.
+    3. **PR:** The bot opens a **Pull Request** with the version bump.
+- **Result:** Merging the PR immediately updates the "authoritative recipe". On the next local setup or CI build, the new assets are automatically acquired.
+
+---
+
+## 5. The Pivot: Why we switched to Model 2
+
+After initially implementing Model 1, we officially pivoted to **Model 2 (Full CI-Based)**.
+
+### Rationale
+1.  **Simplicity:** We reduced the "moving parts" by treating assets as ephemeral build artifacts. We no longer need to babysit hundreds of binary files across environments.
+2.  **Clean History:** Our Git history is focused strictly on logic and design.
+3.  **Infrastructure Realization:** Since we require a GitHub Action for deployment to GitHub Pages anyway, the "Zero-Build" benefit of Model 1 was negligible.
