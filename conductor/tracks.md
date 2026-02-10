@@ -18,3 +18,7 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./tracks/font_audit_20260209/](./tracks/font_audit_20260209/)*
   *Description: Perform a comprehensive audit of the entire font collection. Investigate fonts that produce no visible output (e.g., due to corrupt files or unprintable characters). Fix issues where possible, or omit inconsistent fonts to ensure a high-quality user experience.*
 
+- [~] **Track: Clarify Asset Sourcing Models (Full Repo vs. Full CI)**
+  *Link: [./tracks/asset_model_clarification_20260209/](./tracks/asset_model_clarification_20260209/)*
+  *Description: Resolve the ambiguity between repository-contained and CI-resolved asset management models. Establish a strict architectural choice for the project's assets.*
+
