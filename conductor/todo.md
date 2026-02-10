@@ -24,4 +24,5 @@ This file captures miscellaneous tasks, technical debt, and cleanup items that d
   - Check what FIGlet options (https://github.com/patorjk/figlet.js?tab=readme-ov-file#options) are relevant to this and how it could be incorporated in our app (in particular investigate options like `width`, `whitespaceBreak`, and `verticalLayout`
 
 ## Done
+- Clarify asset sourcing models (Full Repo vs. Full CI) and implement Full Repo-Based architecture [asset_model_clarification_20260209].
 - Initialise todo list [asset_sync_20260209].
