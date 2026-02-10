@@ -1,5 +1,6 @@
 import figlet from 'figlet';
 import standard from 'figlet/importable-fonts/Standard.js';
+import manifest from './assets/manifest.json';
 
 figlet.parseFont('Standard', standard);
 
@@ -15,16 +16,13 @@ async function init() {
     if (!status) return;
 
     try {
-        const response = await fetch('/fonts/fonts.json');
-        const manifest = await response.json();
-        
         const allFonts: FontEntry[] = [];
-        const versions: string[] = [];
+        const infoStrings: string[] = [];
 
-        // Flatten sources into a single list
+        // Process sources from the bundled manifest
         Object.keys(manifest.sources).forEach(sourceKey => {
-            const source = manifest.sources[sourceKey];
-            versions.push(`${source.name} v${source.version}`);
+            const source = (manifest.sources as any)[sourceKey];
+            infoStrings.push(`${source.name} v${source.version} (Updated: ${source.last_updated})`);
             source.fonts.forEach((fontName: string) => {
                 allFonts.push({
                     name: fontName,
@@ -33,18 +31,18 @@ async function init() {
             });
         });
 
-        // Simple alphabetical sort
+        // Alphabetical sort
         cachedFonts = allFonts.sort((a, b) => a.name.localeCompare(b.name));
 
-        status.innerText = `Ready with ${cachedFonts.length} fonts. (${versions.join(', ')})`;
+        status.innerText = `Ready with ${cachedFonts.length} fonts. Sources: ${infoStrings.join(' | ')}`;
         
-        // Base font path for figlet
+        // Base font path for figlet. In Model 1, these are in public/fonts/
         figlet.defaults({ fontPath: '/fonts/' });
         
         renderAll();
     } catch (e) {
         console.error(e);
-        status.innerText = "Error: Could not scan fonts.";
+        status.innerText = "Error: Could not initialize application.";
     }
 }
 
@@ -62,7 +60,6 @@ function renderAll() {
         card.className = 'card';
         card.id = `font-card-${index}`;
         
-        // Initial placeholder content
         card.innerHTML = `
             <span class="font-info">
                 <span class="counter">${String(index + 1).padStart(2, '0')}</span>${font.name}
@@ -87,9 +84,6 @@ function renderAll() {
 }
 
 function debounceRender() {
-    const text = (document.getElementById('userInput') as HTMLInputElement).value;
-    // We can clear and re-render or just update pre contents. 
-    // Re-rendering everything is safer for visual consistency.
     clearTimeout(window.debounceTimer);
     window.debounceTimer = window.setTimeout(renderAll, 400);
 }

@@ -9,7 +9,7 @@ const FIGLET_PKG_JSON = path.join(NODE_MODULES_FIGLET, 'package.json');
 const PUBLIC_FONTS_ROOT = path.join(__dirname, '..', 'public', 'fonts');
 const PATORJK_FONTS_DIR = path.join(PUBLIC_FONTS_ROOT, 'patorjk');
 const LIB_DIR = path.join(__dirname, '..', 'src', 'js', 'lib');
-const ASSETS_DIR = path.join(__dirname, '..', 'src', 'assets');
+const MANIFEST_PATH = path.join(__dirname, '..', 'src', 'assets', 'manifest.json');
 
 console.log('Extracting assets from node_modules (patorjk/figlet.js)...');
 
@@ -62,31 +62,32 @@ if (!libFound) {
     }
 }
 
-// 3. Generate Manifests
-if (!fs.existsSync(ASSETS_DIR)) {
-    fs.mkdirSync(ASSETS_DIR, { recursive: true });
-}
-
+// 3. Update Central Manifest
 let version = 'unknown';
 if (fs.existsSync(FIGLET_PKG_JSON)) {
     const pkg = JSON.parse(fs.readFileSync(FIGLET_PKG_JSON, 'utf8'));
     version = pkg.version;
 }
 
-const manifest = {
-    sources: {
-        patorjk: {
-            name: "patorjk/figlet.js",
-            version: version,
-            basePath: "patorjk",
-            fonts: fontList
-        }
+const timestamp = new Date().toISOString();
+
+let manifest = { sources: {} };
+if (fs.existsSync(MANIFEST_PATH)) {
+    try {
+        manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+    } catch (e) {
+        console.warn('Existing manifest was invalid, recreating.');
     }
+}
+
+// Update (or create) the patorjk source entry
+manifest.sources.patorjk = {
+    name: "patorjk/figlet.js",
+    version: version,
+    last_updated: timestamp,
+    basePath: "patorjk",
+    fonts: fontList
 };
 
-// Write central source-of-truth manifest
-fs.writeFileSync(path.join(ASSETS_DIR, 'patorjk-manifest.json'), JSON.stringify(manifest, null, 2));
-// Also write the runtime fonts.json for the frontend
-fs.writeFileSync(path.join(PUBLIC_FONTS_ROOT, 'fonts.json'), JSON.stringify(manifest, null, 2));
-
-console.log(`Generated manifests for patorjk v${version}.`);
+fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+console.log(`Updated manifest.json for patorjk v${version} (${timestamp}).`);

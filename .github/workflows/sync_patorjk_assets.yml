@@ -2,7 +2,7 @@ name: Sync Assets - patorjk/figlet.js
 
 on:
   schedule:
-    - cron: '0 3 5 * *'  # Runs at 03:00 on the 5th of every month
+    - cron: '0 3 1 * *'  # Runs at 03:00 on the 1st of every month
   workflow_dispatch:      # Allows manual trigger
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         run: |
           UPSTREAM=$(npm run check-latest-version-patorjk | tail -n 1)
           # Read version from the central manifest
-          CURRENT=$(node -e "console.log(JSON.parse(fs.readFileSync('src/assets/patorjk-manifest.json', 'utf8')).sources.patorjk.version)")
+          CURRENT=$(node -e "console.log(JSON.parse(fs.readFileSync('src/assets/manifest.json', 'utf8')).sources.patorjk.version)")
           echo "upstream=$UPSTREAM" >> $GITHUB_OUTPUT
           echo "current=$CURRENT" >> $GITHUB_OUTPUT
           if [ "$UPSTREAM" != "$CURRENT" ]; then
@@ -51,12 +51,12 @@ jobs:
           commit-message: "chore(assets): Update patorjk/figlet.js from ${{ steps.check_update.outputs.current }} to ${{ steps.check_update.outputs.upstream }}"
           title: "Sync Assets: patorjk/figlet.js (${{ steps.check_update.outputs.current }} -> ${{ steps.check_update.outputs.upstream }})"
           body: |
-            Incorporates new version of the `patorjk/figlet.js` (NPM `figlet`) package.
+            A new version of the `patorjk/figlet.js` (NPM `figlet`) package has been detected.
             
             **Update Details:**
             - **From:** ${{ steps.check_update.outputs.current }}
             - **To:** ${{ steps.check_update.outputs.upstream }}
             
-            This PR updates the FIGlet library engine and patorjk font collection in this repository.
+            This PR updates the library engine and font collection committed to the repository.
           branch: chore/sync-patorjk-assets
           delete-branch: true
