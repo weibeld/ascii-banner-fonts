@@ -18,8 +18,5 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./tracks/font_audit_20260209/](./tracks/font_audit_20260209/)*
   *Description: Perform a comprehensive audit of the entire font collection. Investigate fonts that produce no visible output (e.g., due to corrupt files or unprintable characters). Fix issues where possible, or omit inconsistent fonts to ensure a high-quality user experience.*
 
-- [~] **Track: Advanced Controls & Font Categorization**
-  *Link: [./tracks/advanced_controls_20260210/](./tracks/advanced_controls_20260210/)*
-  *Description: Enhance user experience with advanced FIGlet rendering options (width, layout) and implement automated font categorization based on character properties (casing, height).*
 
 
