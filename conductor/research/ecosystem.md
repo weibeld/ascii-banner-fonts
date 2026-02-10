@@ -42,6 +42,6 @@ We compared the file lists of the community collections against our base (`pator
 - **Integration:** While not built directly into tools like the Gemini CLI (which typically uses its own ASCII art generation or standard libraries), TOIlet is the go-to tool for users manually creating colorful banners for their shell profiles (`.bashrc`, `.zshrc`).
 - **Ecosystem:** The TOIlet ecosystem is smaller than FIGlet's but impactful due to its unique features (filters/color).
 
-### ASCII Studio Strategy
+### ASCII Banners Strategy
 For now, we will focus on `.flf` compatibility as it is the most universal. However, because TOIlet fonts are so similar, we may explore adding `.tlf` support in a future track to expand our library even further.
 

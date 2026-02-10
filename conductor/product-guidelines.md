@@ -1,4 +1,4 @@
-# Product Guidelines - ASCII Studio
+# Product Guidelines - ASCII Banners
 
 ## Visual Identity
 - **Aesthetic:** Minimalist-Modern. The interface should be lean and high-contrast, ensuring that the ASCII art remains the focal point.

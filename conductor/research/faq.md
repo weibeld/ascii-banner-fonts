@@ -28,4 +28,4 @@ This application is **static-first**. This means:
 We use the [figlet.js](https://github.com/patorjk/figlet.js) library, a JavaScript implementation of the original C FIGlet driver.
 
 ### What about "TOIlet" fonts?
-TOIlet is a newer tool that extends FIGlet with support for colors (`.tlf` files). Currently, ASCII Studio focuses exclusively on the classic, universal `.flf` format to ensure maximum compatibility.
+TOIlet is a newer tool that extends FIGlet with support for colors (`.tlf` files). Currently, ASCII Banners focuses exclusively on the classic, universal `.flf` format to ensure maximum compatibility.

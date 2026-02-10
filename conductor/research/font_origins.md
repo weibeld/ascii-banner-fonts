@@ -13,5 +13,5 @@ The fonts currently used in this project are primarily sourced from the [patorjk
 - **Aggregation:** Collectors like Patorjk, Xero, and hIMEI have aggregated these historical fonts into modern Git repositories to prevent them from becoming "lost media".
 - **Attribution:** While individual fonts often contain author names in their internal comment sections, many are credited to handles or emails that are no longer active.
 
-## Summary for ASCII Studio
+## Summary for ASCII Banners
 We can continue to use and redistribute these fonts under the assumption that they are permissively licensed or in the public domain, which is the standard practice for the FIGlet ecosystem. For absolute clarity, we can look for specific licenses within individual `.flf` files if we ever encounter a "commercial use" restriction (rare in this community).

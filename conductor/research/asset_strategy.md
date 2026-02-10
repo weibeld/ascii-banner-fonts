@@ -1,6 +1,6 @@
 # Asset Strategy & Architecture
 
-This document defines the architectural strategy for managing external assets (font files and the FIGlet library) in ASCII Studio.
+This document defines the architectural strategy for managing external assets (font files and the FIGlet library) in ASCII Banners.
 
 ## 1. Premise: The NPM Source of Truth
 
@@ -51,7 +51,7 @@ The repository contains only source code and configuration. Assets are ephemeral
 
 ## 4. Selected Strategy: Model 1 (Full Repo-Based)
 
-For **ASCII Studio**, we strictly follow **Model 1**.
+For **ASCII Banners**, we strictly follow **Model 1**.
 
 ### Implementation Details
 - **Library:** The `figlet` library is bundled/copied to `src/js/lib/` and committed.

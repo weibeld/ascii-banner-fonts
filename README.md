@@ -1,4 +1,4 @@
-# ASCII Banner Font Showcase
+# ASCII Banners
 
 A high-performance, static web application to showcase and compare FIGlet ASCII art fonts.
 

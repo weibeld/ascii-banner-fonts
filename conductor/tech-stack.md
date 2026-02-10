@@ -1,4 +1,4 @@
-# Tech Stack - ASCII Studio
+# Tech Stack - ASCII Banners
 
 ## Frontend
 - **Vite:** Next-generation frontend tooling for development and bundling.

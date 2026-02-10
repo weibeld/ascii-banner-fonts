@@ -7,7 +7,6 @@ This file captures miscellaneous tasks, technical debt, and cleanup items that d
 
 ## Backlog
 
-- Rename project to "ASCII Banners"
 - Evaluate font categories:
   - Investigate what categories are used on https://manytools.org/hacker-tools/ascii-banner/ and https://patorjk.com/software/taag/ (the latter is a tool by the patorjk/figlet.js author
   - Investigate whether these categories are defined somewhere in the data or metadata (i.e. in https://github.com/patorjk/figlet.js). If not, how do these tools determine which font is in which category
@@ -24,5 +23,6 @@ This file captures miscellaneous tasks, technical debt, and cleanup items that d
   - Check what FIGlet options (https://github.com/patorjk/figlet.js?tab=readme-ov-file#options) are relevant to this and how it could be incorporated in our app (in particular investigate options like `width`, `whitespaceBreak`, and `verticalLayout`
 
 ## Done
+- Rename project to "ASCII Banners" [Project Chore].
 - Clarify asset sourcing models (Full Repo vs. Full CI) and implement Full Repo-Based architecture [asset_model_clarification_20260209].
 - Initialise todo list [asset_sync_20260209].
