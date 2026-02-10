@@ -1,0 +1,62 @@
+name: Sync Assets - patorjk/figlet.js
+
+on:
+  schedule:
+    - cron: '0 3 5 * *'  # Runs at 03:00 on the 5th of every month
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  sync-patorjk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check for update
+        id: check_update
+        run: |
+          UPSTREAM=$(npm run check-latest-version-patorjk | tail -n 1)
+          # Read version from the central manifest
+          CURRENT=$(node -e "console.log(JSON.parse(fs.readFileSync('src/assets/patorjk-manifest.json', 'utf8')).sources.patorjk.version)")
+          echo "upstream=$UPSTREAM" >> $GITHUB_OUTPUT
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          if [ "$UPSTREAM" != "$CURRENT" ]; then
+            echo "update_available=true" >> $GITHUB_OUTPUT
+          else
+            echo "update_available=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update patorjk/figlet.js dependency
+        if: steps.check_update.outputs.update_available == 'true'
+        run: npm run fetch-assets-patorjk
+
+      - name: Extract patorjk assets
+        if: steps.check_update.outputs.update_available == 'true'
+        run: npm run extract-assets-patorjk
+
+      - name: Create Pull Request
+        if: steps.check_update.outputs.update_available == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(assets): Update patorjk/figlet.js from ${{ steps.check_update.outputs.current }} to ${{ steps.check_update.outputs.upstream }}"
+          title: "Sync Assets: patorjk/figlet.js (${{ steps.check_update.outputs.current }} -> ${{ steps.check_update.outputs.upstream }})"
+          body: |
+            Incorporates new version of the `patorjk/figlet.js` (NPM `figlet`) package.
+            
+            **Update Details:**
+            - **From:** ${{ steps.check_update.outputs.current }}
+            - **To:** ${{ steps.check_update.outputs.upstream }}
+            
+            This PR updates the FIGlet library engine and patorjk font collection in this repository.
+          branch: chore/sync-patorjk-assets
+          delete-branch: true

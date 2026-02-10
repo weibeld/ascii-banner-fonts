@@ -7,7 +7,8 @@ This track aims to resolve the ambiguity between two distinct models for managin
 1. **Model Definition:** Formally define the "Full Repo-Based" and "Full CI-Based" models in the context of our NPM dependency.
 2. **Technical Validation:** Confirm if both models are technically feasible and identify the necessary steps for each.
 3. **Strategic Selection:** Choose one model to follow strictly, avoiding the current "mixed" approach.
-4. **Documentation Sync:** Update `conductor/research/asset_strategy.md` with the finalized decision and logic.
+4. **Maintenance Automation:** Implement a version-aware GitHub Action that acts as a "Maintenance Bot" to update repository-contained assets via Pull Requests.
+5. **Documentation Sync:** Update `conductor/research/asset_strategy.md` with the finalized decision and logic.
 
 ## Research Questions
 1. **Model 1 (Full Repo-Based):** How can we extract and commit both the library logic and fonts to the repo so that `npm install` is never needed at deploy time? What are the implications for version updates?

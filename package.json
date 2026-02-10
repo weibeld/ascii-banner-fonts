@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run copy-fonts && tsc && vite build",
+    "build": "npm run extract-assets-patorjk && tsc && vite build",
     "preview": "vite preview",
-    "copy-fonts": "node scripts/copy-fonts.js"
+    "check-latest-version-patorjk": "npm view figlet version",
+    "fetch-assets-patorjk": "npm update figlet",
+    "extract-assets-patorjk": "node scripts/extract-patorjk-assets.js",
+    "clean-assets-patorjk": "rm -rf public/fonts/patorjk src/js/lib/figlet.js",
+    "clean-assets": "rm -rf public/fonts/* src/js/lib/*"
   },
   "devDependencies": {
     "typescript": "^5.7.3",

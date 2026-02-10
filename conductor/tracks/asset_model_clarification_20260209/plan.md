@@ -8,5 +8,6 @@
 
 ## Phase 2: Implementation & Documentation
 - [x] Task: Apply the necessary configuration changes (e.g., .gitignore, scripts) for the selected model.
+- [x] Task: Implement version-aware GitHub Action for automated patorjk asset updates.
 - [x] Task: Update `conductor/research/asset_strategy.md` with the settled model logic.
 - [~] Task: Conductor - User Manual Verification 'Phase 2: Finalisation' (Protocol in workflow.md)
