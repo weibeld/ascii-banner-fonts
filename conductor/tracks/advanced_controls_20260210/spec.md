@@ -7,6 +7,9 @@ This track focuses on enhancing the user experience by providing advanced contro
 1. **FIGlet Options Integration:** Research and implement support for core FIGlet options (width, horizontal/vertical layout, whitespace breaking).
 2. **Font Categorization:** Implement an automated system to derive font properties (Casing: Lower/Upper/Double; Size: Small/Medium/Large) by inspecting font files.
 3. **Advanced UI Controls:** Provide a UI for users to toggle rendering options and filter fonts by categories.
+4. **Refactor Extraction Pipeline:**
+    - Separate JS library (engine) extraction from font extraction to allow independent source management.
+    - Factor out categorization logic into a reusable utility compatible with multiple font sources.
 
 ## Research Questions
 1. **Option Mapping:** Which FIGlet options from `figlet.js` provide the most value for a showcase comparison?

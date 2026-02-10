@@ -24,9 +24,9 @@ jobs:
       - name: Check for update
         id: check_update
         run: |
-          UPSTREAM=$(npm run check-latest-version-patorjk | tail -n 1)
+          UPSTREAM=$(npm run check-version-patorjk | tail -n 1)
           # Read version from the central manifest
-          CURRENT=$(node -e "console.log(JSON.parse(fs.readFileSync('src/assets/manifest.json', 'utf8')).sources.patorjk.version)")
+          CURRENT=$(node -e "console.log(JSON.parse(fs.readFileSync('assets/manifest.json', 'utf8')).sources.patorjk.version)")
           echo "upstream=$UPSTREAM" >> $GITHUB_OUTPUT
           echo "current=$CURRENT" >> $GITHUB_OUTPUT
           if [ "$UPSTREAM" != "$CURRENT" ]; then
@@ -37,11 +37,11 @@ jobs:
 
       - name: Update patorjk/figlet.js dependency
         if: steps.check_update.outputs.update_available == 'true'
-        run: npm run fetch-assets-patorjk
+        run: npm run fetch-patorjk
 
       - name: Extract patorjk assets
         if: steps.check_update.outputs.update_available == 'true'
-        run: npm run extract-assets-patorjk
+        run: npm run extract-patorjk-library && npm run extract-patorjk-fonts
 
       - name: Create Pull Request
         if: steps.check_update.outputs.update_available == 'true'

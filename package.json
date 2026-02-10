@@ -5,15 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run extract-assets-patorjk && tsc && vite build",
+    "build": "npm run extract-patorjk-library && npm run extract-patorjk-fonts && tsc && vite build",
     "preview": "vite preview",
-    "check-latest-version-patorjk": "npm view figlet version",
-    "fetch-assets-patorjk": "npm update figlet",
-    "extract-assets-patorjk": "node scripts/extract-patorjk-assets.js",
-    "clean-assets-patorjk": "rm -rf public/fonts/patorjk src/js/lib/figlet.js",
-    "clean-assets": "rm -rf public/fonts/* src/js/lib/*"
+    "check-version-patorjk": "npm view figlet version",
+    "fetch-patorjk": "npm update figlet",
+    "extract-patorjk-library": "node scripts/extract-patorjk-library.js",
+    "extract-patorjk-fonts": "node scripts/extract-patorjk-fonts.js",
+    "clean-patorjk-library": "rm -rf assets/lib/figlet.js",
+    "clean-patorjk-fonts": "rm -rf assets/fonts/patorjk",
+    "clean": "rm -rf assets/fonts/* assets/lib/* assets/manifest.json"
   },
   "devDependencies": {
+    "@types/node": "^22.13.1",
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
   },

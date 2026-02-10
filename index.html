@@ -12,6 +12,23 @@
         <div class="controls">
             <h1 style="margin:0; font-size: 24px; white-space: nowrap;">ASCII Banners</h1>
             <input type="text" id="userInput" value="admgemini" placeholder="Type something..." oninput="debounceRender()">
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <span class="label">Size:</span>
+                    <label class="radio-label"><input type="radio" name="size" value="All" checked onchange="renderAll()"> All</label>
+                    <label class="radio-label"><input type="radio" name="size" value="Small" onchange="renderAll()"> Small</label>
+                    <label class="radio-label"><input type="radio" name="size" value="Medium" onchange="renderAll()"> Medium</label>
+                    <label class="radio-label"><input type="radio" name="size" value="Large" onchange="renderAll()"> Large</label>
+                </div>
+
+                <div class="filter-group">
+                    <span class="label">Casing:</span>
+                    <label class="radio-label"><input type="radio" name="casing" value="All" checked onchange="renderAll()"> All</label>
+                    <label class="radio-label"><input type="radio" name="casing" value="Single" onchange="renderAll()"> Single</label>
+                    <label class="radio-label"><input type="radio" name="casing" value="Double" onchange="renderAll()"> Double</label>
+                </div>
+            </div>
         </div>
         <div id="status" style="max-width:1200px; margin: 5px auto 0 auto; padding: 0 20px;">Scanning fonts...</div>
     </header>

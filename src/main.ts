@@ -1,12 +1,14 @@
 import figlet from 'figlet';
 import standard from 'figlet/importable-fonts/Standard.js';
-import manifest from './assets/manifest.json';
+import manifest from '../assets/manifest.json';
 
 figlet.parseFont('Standard', standard);
 
 interface FontEntry {
     name: string;
     sourcePath: string; // relative to /fonts/
+    size: string;
+    casing: string;
 }
 
 let cachedFonts: FontEntry[] = [];
@@ -23,10 +25,12 @@ async function init() {
         Object.keys(manifest.sources).forEach(sourceKey => {
             const source = (manifest.sources as any)[sourceKey];
             infoStrings.push(`${source.name} v${source.version} (Updated: ${source.last_updated})`);
-            source.fonts.forEach((fontName: string) => {
+            source.fonts.forEach((font: any) => {
                 allFonts.push({
-                    name: fontName,
-                    sourcePath: `${source.basePath}/${fontName}`
+                    name: font.name,
+                    sourcePath: `${source.basePath}/${font.name}`,
+                    size: font.categories.size,
+                    casing: font.categories.casing
                 });
             });
         });
@@ -36,7 +40,7 @@ async function init() {
 
         status.innerText = `Ready with ${cachedFonts.length} fonts. Sources: ${infoStrings.join(' | ')}`;
         
-        // Base font path for figlet. In Model 1, these are in public/fonts/
+        // Base font path for figlet. In production, these are at the root /fonts/
         figlet.defaults({ fontPath: '/fonts/' });
         
         renderAll();
@@ -51,24 +55,37 @@ function renderAll() {
     const input = document.getElementById('userInput') as HTMLInputElement;
     if (!output || !input) return;
 
+    // Get filter values (Radio buttons)
+    const sizeFilter = (document.querySelector('input[name="size"]:checked') as HTMLInputElement)?.value || 'All';
+    const casingFilter = (document.querySelector('input[name="casing"]:checked') as HTMLInputElement)?.value || 'All';
+
     const text = input.value || " ";
     output.innerHTML = ''; 
 
-    // Create containers in correct order immediately
-    cachedFonts.forEach((font, index) => {
+    // Apply filtering
+    const filteredFonts = cachedFonts.filter(font => {
+        const matchesSize = sizeFilter === 'All' || font.size === sizeFilter;
+        const matchesCasing = casingFilter === 'All' || font.casing === casingFilter;
+        return matchesSize && matchesCasing;
+    });
+
+    // Create containers in correct order
+    filteredFonts.forEach((font, index) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.id = `font-card-${index}`;
         
         card.innerHTML = `
             <span class="font-info">
-                <span class="counter">${String(index + 1).padStart(2, '0')}</span>${font.name}
+                ${font.name}
+                <span class="font-tag">${font.size}</span>
+                <span class="font-tag">${font.casing}</span>
             </span>
             <pre>Loading...</pre>
         `;
         output.appendChild(card);
 
-        // Async render into the specific card
+        // Async render
         figlet.text(text, { font: font.sourcePath as any }, function(err, data) {
             const pre = card.querySelector('pre');
             if (pre) {
@@ -81,6 +98,11 @@ function renderAll() {
             }
         });
     });
+
+    const status = document.getElementById('status');
+    if (status) {
+        status.innerText = `Showing ${filteredFonts.length} of ${cachedFonts.length} fonts.`;
+    }
 }
 
 function debounceRender() {
@@ -93,9 +115,11 @@ declare global {
     interface Window {
         debounceTimer: number | undefined;
         debounceRender: () => void;
+        renderAll: () => void;
     }
 }
 
 window.debounceRender = debounceRender;
+window.renderAll = renderAll;
 
 window.addEventListener('DOMContentLoaded', init);

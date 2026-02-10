@@ -1,13 +1,13 @@
-/* 1. Page Background: Brighter for better contrast with cards */
+/* 1. Page Background */
 body { 
     background: #2a2a2a; 
     color: #ddd; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Non-monospace */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0;
     margin: 0;
 }
 
-/* 2. Sticky Header for the Input Field */
+/* 2. Sticky Header */
 header {
     background: #1a1a1a;
     padding: 20px;
@@ -23,10 +23,11 @@ header {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-input {
+input#userInput {
     background: #333;
     color: #fff;
     border: 1px solid #555;
@@ -34,9 +35,55 @@ input {
     font-size: 18px;
     border-radius: 4px;
     flex-grow: 1;
+    min-width: 250px;
 }
 
-#status { font-size: 12px; color: #888; margin-top: 5px; }
+/* Filter Controls */
+.filters {
+    display: flex;
+    gap: 25px;
+    font-size: 14px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group .label {
+    color: #888;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.radio-label, .checkbox-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #bbb;
+    transition: color 0.2s;
+}
+
+.radio-label:hover, .checkbox-label:hover {
+    color: #ffcc00;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #ffcc00;
+}
+
+#status { 
+    font-size: 12px; 
+    color: #666; 
+    margin-top: 10px; 
+    max-width: 1200px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
 
 /* 3. Main Content Area */
 main {
@@ -46,7 +93,7 @@ main {
 }
 
 .card { 
-    background: #1a1a1a; /* Darker than body for contrast */
+    background: #1a1a1a;
     border: 1px solid #444;
     margin-bottom: 40px; 
     padding: 20px; 
@@ -54,13 +101,13 @@ main {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* 4. Non-Monospace Font Names */
 .font-info { 
     color: #ffcc00; 
     font-size: 28px; 
     margin-bottom: 15px; 
-    display: block; 
-    font-weight: 300; /* Light weight for a modern look */
+    display: flex;
+    align-items: center;
+    font-weight: 300;
 }
 
 .counter { 
@@ -69,7 +116,19 @@ main {
     margin-right: 15px; 
 }
 
-/* 5. Keep Pre Monospace for ASCII alignment */
+/* Font Tags (Size/Casing badges) */
+.font-tag {
+    font-size: 11px;
+    background: #333;
+    color: #888;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* 4. ASCII Output */
 pre { 
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px; 
@@ -77,7 +136,7 @@ pre {
     margin: 0; 
     color: #00ff41; 
     overflow-x: auto; 
-    background: #000; /* Deep black for max pop */
+    background: #000;
     padding: 20px;
     border-radius: 4px;
     border: 1px solid #333;

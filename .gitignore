@@ -16,3 +16,5 @@ npm-debug.log*
 .idea
 
 # Assets are tracked in this project (Model 1: Full Repo-Based)
+# We track the root assets/ folder
+!assets/

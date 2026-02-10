@@ -1,0 +1,2294 @@
+{
+  "sources": {
+    "patorjk": {
+      "name": "patorjk/figlet.js",
+      "version": "1.10.0",
+      "last_updated": "2026-02-10T12:59:04.986Z",
+      "basePath": "patorjk",
+      "fonts": [
+        {
+          "name": "1Row",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "3-D",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "3D Diagonal",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "3D-ASCII",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "3x5",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "4Max",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "5 Line Oblique",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "AMC 3 Line",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC 3 Liv1",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC AAA01",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Neko",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "AMC Razor",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Razor2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Slash",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "AMC Slider",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Thin",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Tubes",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "AMC Untitled",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "ANSI Compact",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "ANSI Regular",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "ANSI Shadow",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "ASCII 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "ASCII 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "ASCII New Roman",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Acrobatic",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Alligator",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Alligator2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Alpha",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Alphabet",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Arrows",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Avatar",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "B1FF",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Babyface Lame",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Babyface Leet",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Banner",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Banner3-D",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Banner3",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Banner4",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Barbwire",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Basic",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bear",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bell",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Benjamin",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Big ASCII 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Big ASCII 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Big Chief",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Big Money-ne",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Big Money-nw",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Big Money-se",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Big Money-sw",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Big Mono 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Big Mono 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Big",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Bigfig",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Binary",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Block",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Blocks",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bloody",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "BlurVision ASCII",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bolger",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Braced",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bright",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Broadway KB",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Broadway",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Bubble",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Bulbhead",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Caligraphy",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Caligraphy2",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Calvin S",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Cards",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Catwalk",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Chiseled",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Chunky",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Circle",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Classy",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Coder Mini",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Coinstak",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Cola",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Colossal",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Computer",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Contessa",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Contrast",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cosmike",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cosmike2",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Crawford",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Crawford2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Crazy",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cricket",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Cursive",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Cyberlarge",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cybermedium",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cybersmall",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Cygnet",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "DANC4",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "DOS Rebel",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "DWhistled",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Dancing Font",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Decimal",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Def Leppard",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Delta Corps Priest 1",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "DiamFont",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Diamond",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Diet Cola",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Digital",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Doh",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Doom",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Dot Matrix",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Double Shorts",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Double",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Dr Pepper",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Chess",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Font",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Italic",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Piti",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Robot",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Wall",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Efti Water",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Electronic",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Elite",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Emboss 2",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Emboss",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Epic",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Fender",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Filter",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Fire Font-k",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Fire Font-s",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Flipped",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Flower Power",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Font Font",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Four Tops",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Fraktur",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Fun Face",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Fun Faces",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Future",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Fuzzy",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Georgi16",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Georgia11",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Ghost",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Ghoulish",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Glenyn",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Goofy",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Gothic",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Graceful",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Gradient",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Graffiti",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Greek",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Heart Left",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Heart Right",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Henry 3D",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Hex",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Hieroglyphs",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Hollywood",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Horizontal Left",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Horizontal Right",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "ICL-1900",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Impossible",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Invita",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Isometric1",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Isometric2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Isometric3",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Isometric4",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Italic",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Ivrit",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "JS Block Letters",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "JS Bracket Letters",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "JS Capital Curves",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "JS Cursive",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "JS Stick Letters",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Jacky",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Jazmine",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Jerusalem",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Katakana",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Kban",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Keyboard",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Knob",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Konto Slant",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Konto",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "LCD",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Larry 3D 2",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Larry 3D",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Lean",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Letter",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Letters",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Lil Devil",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Line Blocks",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Linux",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Lockergnome",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Madrid",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Marquee",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Maxfour",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Merlin1",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Merlin2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Mike",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Mini",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Mirror",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Mnemonic",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Modular",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Mono 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Mono 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Morse",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Morse2",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Moscow",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Mshebrew210",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Muzzle",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "NScript",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "NT Greek",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "NV Script",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Nancyj-Fancy",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Nancyj-Improved",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Nancyj-Underlined",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Nancyj",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Nipples",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "O8",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "OS2",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Octal",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Ogre",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Old Banner",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Pagga",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Patorjk's Cheese",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Patorjk-HeX",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Pawp",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Peaks Slant",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Peaks",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Pebbles",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Pepper",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Poison",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Puffy",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Puzzle",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Pyramid",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rammstein",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rebel",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Rectangles",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Red Phoenix",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Relief",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Relief2",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Reverse",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Roman",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rot13",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rotated",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rounded",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Rowan Cap",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Rozzo",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "RubiFont",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Runic",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Runyc",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "S Blood",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "SL Script",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Santa Clara",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Script",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Serifcap",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Shaded Blocky",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Shadow",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Shimrod",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Short",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Slant Relief",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Slant",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Slide",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Small ASCII 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small ASCII 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small Block",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small Braille",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small Caps",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Small Isometric1",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Small Keyboard",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Small Mono 12",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small Mono 9",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Small Poison",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Small Script",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Small Shadow",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Small Slant",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Small Tengwar",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Small",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Soft",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Speed",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Spliff",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Stacey",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Stampate",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Stampatello",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Standard",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Star Strips",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Star Wars",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Stellar",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Stforek",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Stick Letters",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Stop",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Straight",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Stronger Than All",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Sub-Zero",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Swamp Land",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Swan",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Sweet",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "THIS",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Tanja",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tengwar",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Term",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Terrace",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Test1",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "The Edge",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Thick",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Thin",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Thorned",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Three Point",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Ticks Slant",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Ticks",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tiles",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tinker-Toy",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tmplr",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tombstone",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Train",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Trek",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tsalagi",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Tubular",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Twisted",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Two Point",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "USA Flag",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Univers",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Upside Down Text",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Varsity",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Wavescape",
+          "categories": {
+            "size": "Large",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Wavy",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Weird",
+          "categories": {
+            "size": "Medium",
+            "casing": "Double"
+          }
+        },
+        {
+          "name": "Wet Letter",
+          "categories": {
+            "size": "Medium",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "Whimsy",
+          "categories": {
+            "size": "Large",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "WideTerm",
+          "categories": {
+            "size": "Unknown",
+            "casing": "Unknown"
+          }
+        },
+        {
+          "name": "Wow",
+          "categories": {
+            "size": "Small",
+            "casing": "Single"
+          }
+        },
+        {
+          "name": "miniwi",
+          "categories": {
+            "size": "Small",
+            "casing": "Double"
+          }
+        }
+      ]
+    }
+  }
+}
