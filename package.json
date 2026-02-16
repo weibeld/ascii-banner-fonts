@@ -1,19 +1,14 @@
 {
   "name": "ascii-banners",
   "version": "1.0.0",
-  "description": "ASCII Banner Font Showcase",
+  "description": "ASCII Banner Font Showcase gallery",
   "type": "module",
   "scripts": {
+    "setup": "node scripts/get-patorjk-fonts.js && node scripts/generate-font-manifest.js",
+    "clean": "rm -rf public/fonts/patorjk src/generated",
     "dev": "vite",
-    "build": "npm run extract-patorjk-library && npm run extract-patorjk-fonts && tsc && vite build",
-    "preview": "vite preview",
-    "check-version-patorjk": "npm view figlet version",
-    "fetch-patorjk": "npm update figlet",
-    "extract-patorjk-library": "node scripts/extract-patorjk-library.js",
-    "extract-patorjk-fonts": "node scripts/extract-patorjk-fonts.js",
-    "clean-patorjk-library": "rm -rf assets/lib/figlet.js",
-    "clean-patorjk-fonts": "rm -rf assets/fonts/patorjk",
-    "clean": "rm -rf assets/fonts/* assets/lib/* assets/manifest.json"
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@types/node": "^22.13.1",
@@ -21,6 +16,6 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
-    "figlet": "^1.8.0"
+    "figlet": "1.10.0"
   }
 }

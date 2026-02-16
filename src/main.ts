@@ -1,14 +1,17 @@
 import figlet from 'figlet';
 import standard from 'figlet/importable-fonts/Standard.js';
-import manifest from '../assets/manifest.json';
+import manifest from './generated/font.json';
 
+// We bundle 'Standard' so the app has a fallback immediately
 figlet.parseFont('Standard', standard);
 
 interface FontEntry {
     name: string;
     sourcePath: string; // relative to /fonts/
-    size: string;
-    casing: string;
+    categories: {
+        size: string;
+        casing: string;
+    };
 }
 
 let cachedFonts: FontEntry[] = [];
@@ -29,8 +32,7 @@ async function init() {
                 allFonts.push({
                     name: font.name,
                     sourcePath: `${source.basePath}/${font.name}`,
-                    size: font.categories.size,
-                    casing: font.categories.casing
+                    categories: font.categories
                 });
             });
         });
@@ -64,8 +66,8 @@ function renderAll() {
 
     // Apply filtering
     const filteredFonts = cachedFonts.filter(font => {
-        const matchesSize = sizeFilter === 'All' || font.size === sizeFilter;
-        const matchesCasing = casingFilter === 'All' || font.casing === casingFilter;
+        const matchesSize = sizeFilter === 'All' || font.categories.size === sizeFilter;
+        const matchesCasing = casingFilter === 'All' || font.categories.casing === casingFilter;
         return matchesSize && matchesCasing;
     });
 
@@ -78,8 +80,8 @@ function renderAll() {
         card.innerHTML = `
             <span class="font-info">
                 ${font.name}
-                <span class="font-tag">${font.size}</span>
-                <span class="font-tag">${font.casing}</span>
+                <span class="font-tag">${font.categories.size}</span>
+                <span class="font-tag">${font.categories.casing}</span>
             </span>
             <pre>Loading...</pre>
         `;

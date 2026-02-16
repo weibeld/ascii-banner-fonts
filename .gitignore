@@ -15,6 +15,7 @@ npm-debug.log*
 .vscode
 .idea
 
-# Assets are tracked in this project (Model 1: Full Repo-Based)
-# We track the root assets/ folder
-!assets/
+# Ephemeral Artifacts (Model 2: Full CI-Based)
+# These are generated at build/setup time and should not be tracked.
+public/fonts/
+src/generated/
