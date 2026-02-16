@@ -8,11 +8,11 @@ const ROOT = path.join(__dirname, '..');
 const FONTS_DEST = path.join(ROOT, 'public', 'fonts', 'patorjk');
 const TEMP_DIR = path.join(ROOT, 'temp_unpack_patorjk');
 
-// Read version from versions.json
-const versions = JSON.parse(fs.readFileSync(path.join(ROOT, 'versions.json'), 'utf8'));
-const version = versions.fonts.patorjk;
+// Read version from font-versions.json
+const versions = JSON.parse(fs.readFileSync(path.join(ROOT, 'font-versions.json'), 'utf8'));
+const version = versions.patorjk;
 
-console.log(`Acquiring patorjk font collection v${version}...`);
+console.log(`Acquiring patorjk font collection ${version}...`);
 
 try {
     // 1. Prepare directories

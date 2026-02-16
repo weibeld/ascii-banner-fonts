@@ -4,8 +4,8 @@
   "description": "ASCII Banner Font Showcase gallery",
   "type": "module",
   "scripts": {
-    "setup": "node scripts/get-patorjk-fonts.js && node scripts/generate-font-manifest.js",
-    "clean": "rm -rf public/fonts/patorjk src/generated",
+    "setup": "npm install && node scripts/get-patorjk-fonts.js && node scripts/make-font-registry.js",
+    "clean": "rm -rf dist public/fonts src/generated",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"

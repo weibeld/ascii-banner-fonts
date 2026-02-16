@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const FONTS_ROOT = path.join(ROOT, 'public', 'fonts');
-const MANIFEST_PATH = path.join(ROOT, 'src', 'generated', 'font.json');
-const VERSIONS_PATH = path.join(ROOT, 'versions.json');
+const REGISTRY_PATH = path.join(ROOT, 'src', 'generated', 'font-registry.json');
+const VERSIONS_PATH = path.join(ROOT, 'font-versions.json');
 
 /**
  * Categorises a FIGlet (.flf) font file by deriving technical properties.
@@ -53,46 +53,61 @@ function categorizeFont(filePath) {
     }
 }
 
-console.log('Generating font manifest...');
+console.log('Generating font registry...');
 
 if (!fs.existsSync(FONTS_ROOT)) {
     console.error('Error: public/fonts directory not found. Run acquisition scripts first.');
     process.exit(1);
 }
 
-const versions = JSON.parse(fs.readFileSync(VERSIONS_PATH, 'utf8'));
-const manifest = { sources: {} };
-const sources = fs.readdirSync(FONTS_ROOT).filter(f => fs.statSync(path.join(FONTS_ROOT, f)).isDirectory());
+const fontVersions = JSON.parse(fs.readFileSync(VERSIONS_PATH, 'utf8'));
 
-for (const sourceKey of sources) {
-    const sourceDir = path.join(FONTS_ROOT, sourceKey);
-    const fonts = fs.readdirSync(sourceDir).filter(f => f.endsWith('.flf'));
+const registry = {
+    collections: {},
+    fonts: []
+};
+
+const collectionIds = fs.readdirSync(FONTS_ROOT).filter(f => fs.statSync(path.join(FONTS_ROOT, f)).isDirectory());
+
+for (const id of collectionIds) {
+    const version = fontVersions[id] || "unknown";
+    const sourceDir = path.join(FONTS_ROOT, id);
+    const fontFiles = fs.readdirSync(sourceDir).filter(f => f.endsWith('.flf'));
     
-    console.log(`Processing ${fonts.length} fonts from source: ${sourceKey}`);
+    console.log(`Processing ${fontFiles.length} fonts from collection: ${id}`);
     
-    const fontMetadata = [];
-    for (const file of fonts) {
+    // Add collection metadata
+    registry.collections[id] = {
+        name: id === 'patorjk' ? "patorjk/figlet.js" : id,
+        version: version,
+        url: id === 'patorjk' ? `https://github.com/patorjk/figlet.js/tree/${version}/fonts` : ""
+    };
+
+    for (const file of fontFiles) {
         const filePath = path.join(sourceDir, file);
+        const fontName = file.replace('.flf', '');
         const cat = categorizeFont(filePath);
         
-        fontMetadata.push({
-            name: file.replace('.flf', ''),
+        // Construct pinned GitHub URL for patorjk
+        let sourceUrl = "";
+        if (id === 'patorjk') {
+            sourceUrl = `https://github.com/patorjk/figlet.js/blob/${version}/fonts/${file}`;
+        }
+
+        registry.fonts.push({
+            name: fontName,
+            collectionId: id,
+            path: `${id}/${fontName}`,
+            sourceUrl: sourceUrl,
             categories: cat || { size: 'Unknown', casing: 'Unknown' }
         });
     }
-
-    manifest.sources[sourceKey] = {
-        name: sourceKey === 'patorjk' ? "patorjk/figlet.js" : sourceKey,
-        version: versions.fonts[sourceKey] || "unknown",
-        last_updated: new Date().toISOString(),
-        basePath: sourceKey,
-        fonts: fontMetadata
-    };
 }
 
-if (!fs.existsSync(path.dirname(MANIFEST_PATH))) {
-    fs.mkdirSync(path.dirname(MANIFEST_PATH), { recursive: true });
+// Ensure output directory exists
+if (!fs.existsSync(path.dirname(REGISTRY_PATH))) {
+    fs.mkdirSync(path.dirname(REGISTRY_PATH), { recursive: true });
 }
 
-fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
-console.log(`Font manifest generated at ${MANIFEST_PATH}`);
+fs.writeFileSync(REGISTRY_PATH, JSON.stringify(registry, null, 2));
+console.log(`Font registry generated at ${REGISTRY_PATH} (${registry.fonts.length} fonts)`);

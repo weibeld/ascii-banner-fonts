@@ -1,13 +1,15 @@
 import figlet from 'figlet';
 import standard from 'figlet/importable-fonts/Standard.js';
-import manifest from './generated/font.json';
+import registry from './generated/font-registry.json';
 
 // We bundle 'Standard' so the app has a fallback immediately
 figlet.parseFont('Standard', standard);
 
 interface FontEntry {
     name: string;
-    sourcePath: string; // relative to /fonts/
+    collectionId: string;
+    path: string;
+    sourceUrl: string;
     categories: {
         size: string;
         casing: string;
@@ -21,28 +23,16 @@ async function init() {
     if (!status) return;
 
     try {
-        const allFonts: FontEntry[] = [];
-        const infoStrings: string[] = [];
+        // The registry is already a flat list under 'fonts'
+        cachedFonts = (registry.fonts as any[]).sort((a, b) => a.name.localeCompare(b.name));
 
-        // Process sources from the bundled manifest
-        Object.keys(manifest.sources).forEach(sourceKey => {
-            const source = (manifest.sources as any)[sourceKey];
-            infoStrings.push(`${source.name} v${source.version} (Updated: ${source.last_updated})`);
-            source.fonts.forEach((font: any) => {
-                allFonts.push({
-                    name: font.name,
-                    sourcePath: `${source.basePath}/${font.name}`,
-                    categories: font.categories
-                });
-            });
-        });
-
-        // Alphabetical sort
-        cachedFonts = allFonts.sort((a, b) => a.name.localeCompare(b.name));
+        const infoStrings = Object.values(registry.collections).map((c: any) => 
+            `${c.name} (${c.version})`
+        );
 
         status.innerText = `Ready with ${cachedFonts.length} fonts. Sources: ${infoStrings.join(' | ')}`;
         
-        // Base font path for figlet. In production, these are at the root /fonts/
+        // Base font path for figlet
         figlet.defaults({ fontPath: '/fonts/' });
         
         renderAll();
@@ -57,21 +47,18 @@ function renderAll() {
     const input = document.getElementById('userInput') as HTMLInputElement;
     if (!output || !input) return;
 
-    // Get filter values (Radio buttons)
     const sizeFilter = (document.querySelector('input[name="size"]:checked') as HTMLInputElement)?.value || 'All';
     const casingFilter = (document.querySelector('input[name="casing"]:checked') as HTMLInputElement)?.value || 'All';
 
     const text = input.value || " ";
     output.innerHTML = ''; 
 
-    // Apply filtering
     const filteredFonts = cachedFonts.filter(font => {
         const matchesSize = sizeFilter === 'All' || font.categories.size === sizeFilter;
         const matchesCasing = casingFilter === 'All' || font.categories.casing === casingFilter;
         return matchesSize && matchesCasing;
     });
 
-    // Create containers in correct order
     filteredFonts.forEach((font, index) => {
         const card = document.createElement('div');
         card.className = 'card';
@@ -87,8 +74,7 @@ function renderAll() {
         `;
         output.appendChild(card);
 
-        // Async render
-        figlet.text(text, { font: font.sourcePath as any }, function(err, data) {
+        figlet.text(text, { font: font.path as any }, function(err, data) {
             const pre = card.querySelector('pre');
             if (pre) {
                 if (err) {
@@ -112,7 +98,6 @@ function debounceRender() {
     window.debounceTimer = window.setTimeout(renderAll, 400);
 }
 
-// Global declarations for the inline event handler
 declare global {
     interface Window {
         debounceTimer: number | undefined;
