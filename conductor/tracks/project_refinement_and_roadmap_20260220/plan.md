@@ -7,13 +7,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Extraction' (Protocol in workflow.md)
 
 ## Phase 2: Strategic Alignment
-- [ ] Task: Evaluate "Central Font Repository" proposal and its impact on Model 2.
-- [ ] Task: Establish precedence and categorisation standards for future font collections.
+- [x] Task: Evaluate "Central Font Repository" architecture proposed in `ARCH_STRATEGY_01_central_font_repo.md`
 
 ## Phase 3: Item-by-Item Grooming
-
-### Architectural Strategy
-- [ ] Groom: `ARCH_STRATEGY_01_central_font_repo.md`
 
 ### Font Curation
 - [ ] Groom: `FONT_CURATION_01_exclusions.md`

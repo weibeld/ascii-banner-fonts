@@ -25,7 +25,7 @@ The repository contains every asset required to run the application. It is a "se
 **Workflow:**
 1.  **Dev:** Developer runs `npm install`. A script extracts assets into `assets/`.
 2.  **Commit:** These assets are **committed** to the Git repository.
-3.  **Deploy:** **Zero-Build Deployment.** GitHub Pages can serve the repo content directly.
+3.  **Deploy:** **Zero-Build Deployment.**. GitHub Pages can serve the repo content directly.
 
 **Rationale:**
 - **Portability:** You can clone the repo and run it offline immediately.
@@ -65,7 +65,7 @@ For **ASCII Banners**, we strictly follow the **Full CI-Based Model (Model 2)**.
 ### Component 2: Font Collections
 - **Nature:** External static assets (currently specifically the [patorjk collection](https://github.com/patorjk/figlet.js/tree/main/fonts)).
 - **Acquisition:** Font collections are obtained in source-dependent ways. For the patorjk collection, we use `npm pack figlet` to extract the `.flf` files. 
-- **Storage:** Extracted fonts are stored in subdirectories within `public/fonts/` (e.g., `public/fonts/patorjk/`).
+- **Storage:** Extracted fonts are stored in subdirectories within `public/fonts/` (e.g., `public/fonts/patorjk/`). They are placed in `public/` so they are accessible as static URL resources at runtime.
 - **Runtime:** These are served through separate URL requests on demand. They are **never** bundled into the JS code.
 
 ### Component 3: Font Version Manifest (`font-versions.json`)
@@ -81,12 +81,45 @@ For **ASCII Banners**, we strictly follow the **Full CI-Based Model (Model 2)**.
 ### Component 5: Font Management Scripts
 - **Nature:** Custom automation logic.
 - **Role:** Bridges the gap between the Font Version Manifest and the Font Registry.
-    - `get-*-fonts.js`: Implements the source-specific acquisition logic for obtaining the fonts.
+    - `get-patorjk-fonts.js`: Implements the source-specific acquisition logic for obtaining the fonts.
     - `make-font-registry.js`: Implements the analysis logic (categorization) and compiles the Font Registry from the font data.
 
 ---
 
-## 4. Lifecycle Management Interface
+## 4. Evolution: The Two-Repo Split
+
+To further enforce the **Separation of Concerns**, the project is strategically evolving from a single integrated repository into a **Distributed Data Ecosystem**.
+
+### The Architecture
+The responsibilities are split between two specialized repositories:
+
+1.  **Font Data (The Backend):**
+    - **Focus:** Data curation, analysis, and integrity.
+    - **Components:** Owns **Component 2** (Font Collections), **Component 4** (Font Registry), and **Component 5** (Font Management Scripts).
+    - **Content:**
+        - The actual font files (curated, fixed, and renamed) maintained directly in this repository.
+        - Updates from upstream sources (e.g., patorjk/figlet.js) are handled entirely within this repo.
+        - Comprehensive font analysis logic (categorisation, character count extraction, international character mappings).
+        - A definitive, versioned Font Registry provided as a ready-to-use artifact.
+    - **Outcome:**
+        - Acts as a general-purpose, versioned source of truth for FIGlet fonts.
+        - Storage of fonts in our own sphere of control eliminates reliance on third-party uptime.
+        - Becomes a standalone public resource (the largest unified collection of FIGlet fonts on the internet).
+
+2.  **ASCII Banners Application (The Frontend - This Repo):**
+    - **Focus:** Presentation, UX, and user interaction.
+    - **Components:** Owns **Component 1** (FIGlet Library) and **Component 3** (Font Version Manifest).
+    - **Acquisition:**
+        - The app has only a single versioned data dependency (our own Font Data repo).
+        - During `npm run setup`, this app fetches the curated fonts and the pre-compiled registry from the Font Data repository.
+        - Fonts are locally downloaded during the build process to avoid CORS issues and ensure domain-local availability.
+    - **Outcome:**
+        - Simplifies the application by removing all analysis logic and multi-source management.
+        - Focuses exclusively on creating a high-performance, beautiful UI.
+
+---
+
+## 5. Lifecycle Management Interface
 
 The entire project lifecycle is manageable through standard `npm run` commands.
 
@@ -110,7 +143,7 @@ Automated GitHub Actions workflow:
 
 ---
 
-## 5. The Pivot: Why we switched to Model 2
+## 6. The Pivot: Why we switched to Model 2
 
 After initially implementing Model 1 (Full Repo-Based), we officially pivoted to **Model 2 (Full CI-Based)**.
 
