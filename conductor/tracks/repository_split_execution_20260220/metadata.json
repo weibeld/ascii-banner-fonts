@@ -1,0 +1,8 @@
+{
+  "track_id": "repository_split_execution_20260220",
+  "type": "refactor",
+  "status": "new",
+  "created_at": "2026-02-20T16:00:00Z",
+  "updated_at": "2026-02-20T16:00:00Z",
+  "description": "Execute the split of the monolithic repo into dedicated Font Data and Application repositories."
+}
