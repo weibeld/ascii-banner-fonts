@@ -1,0 +1,74 @@
+name: Sync Dependency Versions
+
+on:
+  schedule:
+    - cron: '0 3 1 * *'  # Runs at 03:00 on the 1st of every month
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for figlet updates
+        id: check_figlet
+        run: |
+          LATEST=$(npm view figlet version)
+          CURRENT=$(node -e "console.log(require('./package.json').dependencies.figlet)")
+          
+          echo "latest=$LATEST" >> $GITHUB_OUTPUT
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          
+          if [ "$LATEST" != "$CURRENT" ]; then
+            echo "update_available=true" >> $GITHUB_OUTPUT
+          else
+            echo "update_available=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update manifests
+        if: steps.check_figlet.outputs.update_available == 'true'
+        run: |
+          LATEST=${{ steps.check_figlet.outputs.latest }}
+          
+          # Update package.json
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            pkg.dependencies.figlet = '$LATEST';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+          
+          # Update font-versions.json (assuming patorjk follows figlet version with 'v' prefix)
+          node -e "
+            const fs = require('fs');
+            const fonts = JSON.parse(fs.readFileSync('font-versions.json', 'utf8'));
+            fonts.patorjk = 'v$LATEST';
+            fs.writeFileSync('font-versions.json', JSON.stringify(fonts, null, 2) + '\n');
+          "
+
+      - name: Create Pull Request
+        if: steps.check_figlet.outputs.update_available == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(deps): Update figlet and patorjk fonts to v${{ steps.check_figlet.outputs.latest }}"
+          title: "Update Dependencies: figlet & patorjk fonts (${{ steps.check_figlet.outputs.current }} -> ${{ steps.check_figlet.outputs.latest }})"
+          body: |
+            A new version of the `figlet` NPM package has been detected.
+            
+            **Update Details:**
+            - **New Version:** ${{ steps.check_figlet.outputs.latest }}
+            - **Current Version:** ${{ steps.check_figlet.outputs.current }}
+            
+            This PR updates the pinned version in `package.json` and the corresponding patorjk font collection in `font-versions.json`.
+            
+            Merging this PR will trigger a new deployment with updated assets on the next build.
+          branch: chore/sync-dependencies
+          delete-branch: true
