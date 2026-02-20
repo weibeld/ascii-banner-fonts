@@ -7,19 +7,8 @@ This file captures miscellaneous tasks, technical debt, and cleanup items that d
 
 ## Backlog
 
-- UI tweaks:
-  - Add copy-to-clipboard button to each rendering
-  - Add link back to font definition file for each font
-  - Add quick switch for switching between dark and light mode
-  - Add controls to change text colour (and maybe backround colour)
-- Favourite system: allow marking fonts as favourite and later separately view them, either at the top of the page, in a sidebar, etc.
-  - No persistent session storage needed (i.e. no user login), maybe storage in cookie (or just URL) for short-term memory
-  - Include button for clearing favourites
-- Evaluate additional font sources on https://www.figlet.org/ (list of links below "Many fonts are also available:")
-  - Evaluate nature of these fonts, overlap with patorjk font collection. Incorporate task into [font_sources_20260209] track
-- Pin npm package version in the fetch command (version is probably defined in manifest, if not, must run the "check latest version" command first)
-
 ## Done
+- Pin npm package version in the fetch command [migrate_to_ci_based_asset_strategy_20260210]
 - Separate JS library extraction from font extraction [advanced_controls_20260210].
 - Factor out categorisation logic into a reusable utility [advanced_controls_20260210].
 - Rename project to "ASCII Banners" [Project Chore].
