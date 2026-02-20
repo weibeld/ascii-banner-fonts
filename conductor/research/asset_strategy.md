@@ -25,7 +25,7 @@ The repository contains every asset required to run the application. It is a "se
 **Workflow:**
 1.  **Dev:** Developer runs `npm install`. A script extracts assets into `assets/`.
 2.  **Commit:** These assets are **committed** to the Git repository.
-3.  **Deploy:** **Zero-Build Deployment.**. GitHub Pages can serve the repo content directly.
+3.  **Deploy:** **Zero-Build Deployment.** GitHub Pages can serve the repo content directly.
 
 **Rationale:**
 - **Portability:** You can clone the repo and run it offline immediately.
@@ -93,29 +93,10 @@ To further enforce the **Separation of Concerns**, the project is strategically 
 ### The Architecture
 The responsibilities are split between two specialized repositories:
 
-1.  **Font Data (The Backend):**
-    - **Focus:** Data curation, analysis, and integrity.
-    - **Components:** Owns **Component 2** (Font Collections), **Component 4** (Font Registry), and **Component 5** (Font Management Scripts).
-    - **Content:**
-        - The actual font files (curated, fixed, and renamed) maintained directly in this repository.
-        - Updates from upstream sources (e.g., patorjk/figlet.js) are handled entirely within this repo.
-        - Comprehensive font analysis logic (categorisation, character count extraction, international character mappings).
-        - A definitive, versioned Font Registry provided as a ready-to-use artifact.
-    - **Outcome:**
-        - Acts as a general-purpose, versioned source of truth for FIGlet fonts.
-        - Storage of fonts in our own sphere of control eliminates reliance on third-party uptime.
-        - Becomes a standalone public resource (the largest unified collection of FIGlet fonts on the internet).
+1.  **Font Data (The Backend):** Owns Components 2, 4, and 5. Focuses on data curation, analysis, and integrity.
+2.  **ASCII Banners Application (The Frontend - This Repo):** Owns Components 1 and 3. Focuses on presentation, UX, and interaction.
 
-2.  **ASCII Banners Application (The Frontend - This Repo):**
-    - **Focus:** Presentation, UX, and user interaction.
-    - **Components:** Owns **Component 1** (FIGlet Library) and **Component 3** (Font Version Manifest).
-    - **Acquisition:**
-        - The app has only a single versioned data dependency (our own Font Data repo).
-        - During `npm run setup`, this app fetches the curated fonts and the pre-compiled registry from the Font Data repository.
-        - Fonts are locally downloaded during the build process to avoid CORS issues and ensure domain-local availability.
-    - **Outcome:**
-        - Simplifies the application by removing all analysis logic and multi-source management.
-        - Focuses exclusively on creating a high-performance, beautiful UI.
+For a detailed breakdown of the backend strategy, acquisition logic, and transition roadmap, refer to the **[Font Data Backend Launch Pad](./font_data_backend.md)**.
 
 ---
 
