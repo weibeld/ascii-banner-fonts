@@ -11,6 +11,9 @@
 
 ## Phase 3: Item-by-Item Grooming
 
+### Architectural Strategy
+- [ ] Groom: `ARCH_STRATEGY_02_backend_data_strategy.md`
+
 ### Font Curation
 - [ ] Groom: `FONT_CURATION_01_exclusions.md`
 - [ ] Groom: `FONT_CURATION_02_fixes.md`

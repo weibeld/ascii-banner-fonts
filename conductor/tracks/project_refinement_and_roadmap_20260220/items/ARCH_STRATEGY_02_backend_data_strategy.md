@@ -1,0 +1,19 @@
+- For the backend project:
+  - General data storage strategy:
+    - Do we collect and foster the data in the repo (data is the source of truth) or do we keep everything automated so that we can regenerate the data from its original sources at any time (generation scripts are the source of truth)
+    - Is there a common name for these two data strategies?
+  - Font acquisition strategies:
+    - Approach A: take everything from patorjk, add additional fonts that are not yet in the patorjk collection from other sources (official FIGlet distro, xero/figlet-fonts, etc.)
+      - Pros:
+        - Alignment with other tools that are based on patorjk (https://manytools.org/hacker-tools/ascii-banner/, https://patorjk.com/software/taag/, all tools that use the figlet.js library)
+        - Automatic sync with all new patorjk versions
+      - Cons
+        - How to incorporate our own edits and curation (e.g. we want to exclude, rename, or edit some fonts). Automate it to be repeatable during patorjk updates, or do them manually as one-off, but then patorjk version syncs become more complex because can't just sync the entire data set anymore?
+        - What to declare as the source of a font in the metadata if it exists in both the patorjk data and e.g. the official FIGlet distro?
+    - Approach B: take fonts from original sources first, i.e. first take from official FIGlet distro (ftp://ftp.figlet.org/pub/figlet/fonts/), then add only those fonts from patorjk that are not yet in the official distro, and in the same way with other sources
+      - Pros: 
+        - We build our own "authoritative" collection, we are free to do our own curation, edits, conventions, etc.
+        - It's always clear where a font really comes from
+      - Cons
+        - What to do with the edits that patorjk did on some of the FIGlet distro fonts? Incorporate or ignore?
+        - How to handle patorjk updates (may be new fonts or edit to existing fonts)? Automatically, or manual incorporation if desired?
