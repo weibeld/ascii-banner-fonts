@@ -7,19 +7,20 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Extraction' (Protocol in workflow.md)
 
 ## Phase 2: Strategic Alignment
-- [x] Task: Evaluate "Central Font Repository" architecture proposed in `ARCH_STRATEGY_01_central_font_repo.md`
+- [x] Task: Evaluate "Central Font Repository" architecture.
+- [x] Task: Establish "Launch Pad" for Font Data backend (`font_data_backend.md`).
 
 ## Phase 3: Item-by-Item Grooming
 
 ### Architectural Strategy
-- [ ] Groom: `ARCH_STRATEGY_02_backend_data_strategy.md`
+- [x] Task: Process `ARCH_STRATEGY_02_backend_data_strategy.md`.
 
 ### Font Curation
 - [ ] Groom: `FONT_CURATION_01_exclusions.md`
 - [ ] Groom: `FONT_CURATION_02_fixes.md`
-- [ ] Groom: `FONT_CURATION_03_whitespace.md`
-- [ ] Groom: `FONT_CURATION_04_line_endings.md`
-- [ ] Groom: `FONT_CURATION_05_renaming.md`
+- [ ] Groom: `FONT_CURATION_03_renaming.md`
+- [ ] Groom: `FONT_CURATION_04_whitespace.md`
+- [ ] Groom: `FONT_CURATION_05_line_endings.md`
 
 ### Font Metadata
 - [ ] Groom: `FONT_METADATA_01_supported_chars.md`
