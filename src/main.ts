@@ -32,8 +32,12 @@ async function init() {
 
         status.innerText = `Ready with ${cachedFonts.length} fonts. Sources: ${infoStrings.join(' | ')}`;
         
-        // Base font path for figlet
-        figlet.defaults({ fontPath: '/fonts/' });
+        // Base font path for figlet. Use Vite's BASE_URL to handle project subdirectories.
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+            ? import.meta.env.BASE_URL 
+            : import.meta.env.BASE_URL + '/';
+        
+        figlet.defaults({ fontPath: `${baseUrl}fonts` });
         
         renderAll();
     } catch (e) {
