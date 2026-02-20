@@ -1,8 +1,8 @@
 {
   "track_id": "migrate_to_ci_based_asset_strategy_20260210",
   "type": "refactor",
-  "status": "new",
+  "status": "completed",
   "created_at": "2026-02-10T14:00:00Z",
-  "updated_at": "2026-02-10T14:00:00Z",
+  "updated_at": "2026-02-20T14:00:00Z",
   "description": "Migrate to CI-Based Asset Strategy (Model 2)"
 }

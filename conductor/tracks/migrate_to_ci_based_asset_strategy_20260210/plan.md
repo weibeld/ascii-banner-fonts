@@ -14,6 +14,6 @@
 
 ## Phase 3: Frontend & CI/CD
 - [x] Task: Update `src/main.ts` to import the bundled `font-registry.json`.
-- [~] Task: Implement `.github/workflows/deploy.yml` for automated GitHub Pages deployment.
-- [ ] Task: Implement `.github/workflows/sync_versions.yml` (Dependency Update Workflow).
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Finalisation' (Protocol in workflow.md)
+- [x] Task: Implement `.github/workflows/deploy.yml` for automated GitHub Pages deployment.
+- [x] Task: Implement `.github/workflows/sync_versions.yml` (Dependency Update Workflow).
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Finalisation' (Protocol in workflow.md)
