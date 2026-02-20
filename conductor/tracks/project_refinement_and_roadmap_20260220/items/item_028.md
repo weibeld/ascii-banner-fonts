@@ -1,0 +1,1 @@
+- TBD: normalise all fonts to have no empty lines at top and bottom and no empty column at the left (if not already the case, must check all characters)?

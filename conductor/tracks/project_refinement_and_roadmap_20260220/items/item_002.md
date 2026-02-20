@@ -1,0 +1,1 @@
+- TBD: in cards in UI, can ascender and descender lines be only displayed if there is currently actually a character using them (https://patorjk.com/software/taag seems to to it)?

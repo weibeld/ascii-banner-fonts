@@ -1,0 +1,1 @@
+- Check out what is https://artcode.org/ascii/index.php (ASCII Arts Web Ring) and evaluate if it's worth registering the app there

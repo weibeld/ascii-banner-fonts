@@ -1,0 +1,1 @@
+- Extract number of supported characters as metadata in font analysis

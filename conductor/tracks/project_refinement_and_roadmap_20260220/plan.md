@@ -1,8 +1,9 @@
 # Implementation Plan - Project Refinement & Roadmap Planning
 
 ## Phase 1: Knowledge Extraction
-- [ ] Task: Extract atomic items from `brain-dump-2026-02-20.md` to `items/` verbatim.
-- [ ] Task: Review and verify extraction integrity.
+- [x] Task: Extract atomic items from `brain-dump-2026-02-20.md` to `items/` verbatim.
+- [ ] Task: Organise items into logical groups via file renaming.
+- [ ] Task: Review and verify extraction and grouping integrity.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Extraction' (Protocol in workflow.md)
 
 ## Phase 2: Strategic Alignment

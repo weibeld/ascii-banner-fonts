@@ -1,0 +1,3 @@
+- UI glitches:
+  - Currently when changing the input and the height of the display card changes (probably inevitable), the scroll position jumps to a new place (i.e. you don't see the same card at the same position on the screen anymore), which is very distracting. The screen should be fixed at a specific logical position (e.g. in the middle of the screen) even when editing the input text)
+  - When the input field is empty, cards have different heights (probably based on the height specifciation in the font files). All cards should have the same height if they are empty.

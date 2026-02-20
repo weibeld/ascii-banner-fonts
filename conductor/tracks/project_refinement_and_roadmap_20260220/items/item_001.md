@@ -1,0 +1,9 @@
+- UI tweaks:
+  - Add copy-to-clipboard button to each rendering
+  - Add link back to font definition file for each font
+  - Add quick switch for switching between dark and light mode
+  - Add controls to change text colour (and maybe backround colour)
+  - Add shorthand option for inserting default text in input field (e.g. "ABCDEFGH...123..." or something similar)
+  - Option for displaying fine helper lines in cars (baseline, descender line, ascender line, etc., might also include a full grid showing all the cells)
+  - Display number of supported characters of each font
+  - Size selection UI could be a slider (or double slider) to freely select a range of sizes. The size would then be defined as the character height (could be with or without descenders)

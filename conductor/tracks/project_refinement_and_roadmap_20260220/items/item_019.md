@@ -1,0 +1,1 @@
+- TBD: evaluate whether to include code comment option in UI, i.e. formatting the banner with prefixed comment characters for various languages so that it can be copy-pasted into source files (as implemented e.g. on https://patorjk.com/software/taag/)

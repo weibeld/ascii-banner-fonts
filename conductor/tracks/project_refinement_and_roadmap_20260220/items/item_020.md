@@ -1,0 +1,1 @@
+- TBD: evaluate optional display of header comments of font files in UI (as implemented on https://manytools.org/hacker-tools/ascii-banner/ as "Display info about selected font")

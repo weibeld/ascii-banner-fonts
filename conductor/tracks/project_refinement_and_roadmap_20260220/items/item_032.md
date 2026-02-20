@@ -1,0 +1,1 @@
+- For the records: when investigating the effects of smushing etc, look at a font like "Diet Cola" which contains horizontally overlapping characters

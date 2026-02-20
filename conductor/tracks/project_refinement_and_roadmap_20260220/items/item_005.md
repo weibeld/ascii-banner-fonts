@@ -1,0 +1,3 @@
+- Favourite system: allow marking fonts as favourite and later separately view them, either at the top of the page, in a sidebar, etc.
+  - No persistent session storage needed (i.e. no user login), maybe storage in cookie (or just URL) for short-term memory
+  - Include button for clearing favourites

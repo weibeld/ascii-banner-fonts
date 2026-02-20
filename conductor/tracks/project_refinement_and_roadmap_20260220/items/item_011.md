@@ -1,0 +1,1 @@
+- For the dependency update workflow, check if Renovate (https://github.com/renovatebot/renovate) could be used or if it's overkill

@@ -1,0 +1,1 @@
+- Make TOIlet fonts as a separate category

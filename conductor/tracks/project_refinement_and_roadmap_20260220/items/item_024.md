@@ -1,0 +1,1 @@
+- For the records: there are single-case fonts that are only lower-case, for example [Mike](https://github.com/patorjk/figlet.js/blob/main/fonts/Mike.flf), [Whimsy](https://github.com/patorjk/figlet.js/blob/main/fonts/Whimsy.flf)
