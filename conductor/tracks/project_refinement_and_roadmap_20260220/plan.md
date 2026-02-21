@@ -16,7 +16,7 @@
 - [x] Task: Process `ARCH_STRATEGY_02_backend_data_strategy.md`.
 
 ### Font Curation
-- [ ] Groom: `FONT_CURATION_01_exclusions.md`
+- [x] Groom: `FONT_CURATION_01_exclusions.md`
 - [ ] Groom: `FONT_CURATION_02_fixes.md`
 - [ ] Groom: `FONT_CURATION_03_renaming.md`
 - [ ] Groom: `FONT_CURATION_04_whitespace.md`

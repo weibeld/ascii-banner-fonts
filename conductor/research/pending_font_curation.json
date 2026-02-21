@@ -2,181 +2,211 @@
   {
     "font_name": "Mnemonic",
     "action": "exclude",
-    "reason": "Non-display mapping (RFC 1345 mnemonics)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of special non-ASCII characters to an obsolete standard of mnemonics (RFC 1345 from 1992). E.g., inputting 'Æ' prints '&AE'."
   },
   {
     "font_name": "ICL-1900",
     "action": "exclude",
-    "reason": "Punch card format (not useful for display)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Prints characters in the ICL-1900 punch card format. Not useful for standard display."
   },
   {
     "font_name": "Octal",
     "action": "exclude",
-    "reason": "Numerical ASCII code mapping",
-    "source": "ftp.figlet.org"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to their octal ASCII codes."
   },
   {
     "font_name": "Hex",
     "action": "exclude",
-    "reason": "Numerical ASCII code mapping",
-    "source": "ftp.figlet.org"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to their hexadecimal ASCII codes."
   },
   {
     "font_name": "Binary",
     "action": "exclude",
-    "reason": "Numerical ASCII code mapping",
-    "source": "ftp.figlet.org"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to their binary ASCII codes."
   },
   {
     "font_name": "Decimal",
     "action": "exclude",
-    "reason": "Numerical ASCII code mapping",
-    "source": "ftp.figlet.org"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to their decimal ASCII codes."
   },
   {
     "font_name": "Morse",
     "action": "exclude",
-    "reason": "Morse code mapping",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to Morse code dots and dashes."
   },
   {
     "font_name": "Morse2",
     "action": "exclude",
-    "reason": "Morse code mapping",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Nancyj-Improved",
-    "action": "exclude",
-    "reason": "Redundant duplicate of Nancyj (line ending difference only)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of ASCII characters to Morse code dots and dashes."
   },
   {
     "font_name": "Rot13",
     "action": "exclude",
-    "reason": "Non-display character rotation mapping",
-    "source": "ftp.figlet.org"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Rotates alphabetical characters by 13 positions."
   },
   {
     "font_name": "Upside Down Text",
     "action": "exclude",
-    "reason": "Character flip mapping (not a display font)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of characters to other characters that look like upside down versions of the initial characters."
   },
   {
     "font_name": "WideTerm",
     "action": "exclude",
-    "reason": "CJK full-width mapping",
-    "source": "TOIlet"
-  },
-  {
-    "font_name": "WoW",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable leetspeak",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "1Row",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable leetspeak",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "B1FF",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable leetspeak",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Benjamin",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable leetspeak",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "AMC 3 LIV",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable (rotated 90 degrees)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of latin characters to their CJK full-width equivalents."
   },
   {
     "font_name": "Circle",
     "action": "exclude",
-    "reason": "Symbolic circled character mapping",
-    "source": "TOIlet"
-  },
-  {
-    "font_name": "Crawford",
-    "action": "exclude",
-    "reason": "Superseded by Crawford2 (renamed to Crawford Patorjk)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping of characters to circled versions of these characters (e.g., Ⓐ). TOIlet font."
   },
   {
     "font_name": "DWhistled",
     "action": "exclude",
-    "reason": "Tin whistle tablature (not a display font)",
-    "source": "patorjk"
+    "reason": "Not a display font (character mapping)",
+    "source": "patorjk",
+    "comments": "Mapping to fingering charts (tablature) for six hole diatonic flutes like the tin whistle."
   },
   {
     "font_name": "Efti Chess",
     "action": "exclude",
-    "reason": "Symbolic chess mapping",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Efti Piti",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable leetspeak",
-    "source": "patorjk"
+    "reason": "Not a display font (pictorial mapping)",
+    "source": "patorjk",
+    "comments": "Mapping to non-textual chess piece symbols."
   },
   {
     "font_name": "Efti Wall",
     "action": "exclude",
-    "reason": "Non-textual mapping",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Fire Font-s",
-    "action": "exclude",
-    "reason": "Redundant duplicate of Fire Font-k (header options only)",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Fun Face",
-    "action": "exclude",
-    "reason": "Redundant subset of Fun Faces",
-    "source": "patorjk"
+    "reason": "Not a display font (pictorial mapping)",
+    "source": "patorjk",
+    "comments": "Mapping to non-textual illustratios."
   },
   {
     "font_name": "Hieroglyphs",
     "action": "exclude",
-    "reason": "Symbolic hieroglyph mapping (not useful)",
-    "source": "patorjk"
+    "reason": "Not a display font (pictorial mapping)",
+    "source": "patorjk",
+    "comments": "Mapping to illustrations representing Egyptian hieroglyphs, too small a subset of hieroglyphs to be considered an international language font."
+  },
+  {
+    "font_name": "Nancyj-Improved",
+    "action": "exclude",
+    "reason": "Duplicate",
+    "source": "patorjk",
+    "comments": "Identical to 'Nancyj' with the only difference that 'Nancyj-Improved' uses Windows line endings end 'Nancyj' uses Unix line endings."
   },
   {
     "font_name": "Larry 3D 2",
     "action": "exclude",
-    "reason": "Exact duplicate of Larry 3D",
-    "source": "patorjk"
+    "reason": "Duplicate",
+    "source": "patorjk",
+    "comments": "Exact duplicate of 'Larry 3D'."
+  },
+  {
+    "font_name": "Crawford",
+    "action": "exclude",
+    "reason": "Superseded",
+    "source": "patorjk",
+    "comments": "Superseded by 'Crawford2' (to be renamed to Crawford Patorjk), which is a much improved version (the current version is really ugly)."
   },
   {
     "font_name": "Old Banner",
     "action": "exclude",
-    "reason": "Superseded by Banner",
-    "source": "patorjk"
-  },
-  {
-    "font_name": "Rotated",
-    "action": "exclude",
-    "reason": "Low utility / Unreadable (rotated 90 degrees)",
-    "source": "patorjk"
+    "reason": "Superseded",
+    "source": "patorjk",
+    "comments": "Older version of 'Banner' by the same author."
   },
   {
     "font_name": "Runic",
     "action": "exclude",
-    "reason": "Superseded by Runyc",
-    "source": "ftp.figlet.org"
+    "reason": "Superseded",
+    "source": "patorjk",
+    "comments": "Older version of 'Runyc' which adds support for substantially more characters such as lower-case runes."
+  },
+  {
+    "font_name": "Fire Font-s",
+    "action": "exclude",
+    "reason": "Duplicate",
+    "source": "patorjk",
+    "comments": "Similar to 'Fire Font-k' but uses different smushing options in the header, which can also be set dynamically. Skip this font ane instead rename 'Fire Font-k' to 'Fire Font'."
+  },
+  {
+    "font_name": "Fun Face",
+    "action": "exclude",
+    "reason": "Superseded",
+    "source": "patorjk",
+    "comments": "Less complete version of 'Fun Faces'."
+  },
+  {
+    "font_name": "WoW",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Leetspeak font from the  World of Warcraft (WoW) era (around 2005), unreadable."
+  },
+  {
+    "font_name": "1Row",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Leetspeak font, unreadable."
+  },
+  {
+    "font_name": "B1FF",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Leetspeak font, unreadable."
+  },
+  {
+    "font_name": "Benjamin",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Leetspeak font, unreadable."
+  },
+  {
+    "font_name": "AMC 3 LIV",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Vertical (90 degrees rotated), leetspeak-like font, unreadable."
+  },
+  {
+    "font_name": "Efti Piti",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Leetspeak font, unreadable."
+  },
+  {
+    "font_name": "Rotated",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "90-degree rotated 2-line font, unreadable."
   }
 ]

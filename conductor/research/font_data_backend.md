@@ -84,6 +84,9 @@ To maintain auditability, each import generates a machine-readable Ledger (e.g.,
 ### Reconciliation & "Inspiration" Edits
 This system simplifies the handling of duplicates. If an import contains a font we already possess, we record it as "Skipped (Duplicate)". However, if the new source contains a bug fix for that font, we do not switch sources. Instead, we apply the fix to our existing "Gold" copy and record a "Patch" action in our font's biography, noting that the fix was "Inspired by" the recent import.
 
+### Initial Curation Integration
+The preliminary curation identified during the initial project grooming (including candidate exclusions, renames, and fixes) is currently safeguarded in the structured `pending_font_curation.json` file. One of the first tracks in the new backend repository will be to formally process this data holder into the first set of Import Ledgers within the new system.
+
 ### Open Questions
 - **Import Directory Structure:** Should each import be stored in its own dedicated directory? What are the naming conventions and what specific content (besides fonts) should be included?
 - **Source Data Persistence:** Should the full original source data be committed to the repository? If so, should it be stored in its expanded form for easy diffing or as a compressed archive (ZIP) to keep the repository lean?
