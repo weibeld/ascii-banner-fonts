@@ -1,0 +1,182 @@
+[
+  {
+    "font_name": "Mnemonic",
+    "action": "exclude",
+    "reason": "Non-display mapping (RFC 1345 mnemonics)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "ICL-1900",
+    "action": "exclude",
+    "reason": "Punch card format (not useful for display)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Octal",
+    "action": "exclude",
+    "reason": "Numerical ASCII code mapping",
+    "source": "ftp.figlet.org"
+  },
+  {
+    "font_name": "Hex",
+    "action": "exclude",
+    "reason": "Numerical ASCII code mapping",
+    "source": "ftp.figlet.org"
+  },
+  {
+    "font_name": "Binary",
+    "action": "exclude",
+    "reason": "Numerical ASCII code mapping",
+    "source": "ftp.figlet.org"
+  },
+  {
+    "font_name": "Decimal",
+    "action": "exclude",
+    "reason": "Numerical ASCII code mapping",
+    "source": "ftp.figlet.org"
+  },
+  {
+    "font_name": "Morse",
+    "action": "exclude",
+    "reason": "Morse code mapping",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Morse2",
+    "action": "exclude",
+    "reason": "Morse code mapping",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Nancyj-Improved",
+    "action": "exclude",
+    "reason": "Redundant duplicate of Nancyj (line ending difference only)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Rot13",
+    "action": "exclude",
+    "reason": "Non-display character rotation mapping",
+    "source": "ftp.figlet.org"
+  },
+  {
+    "font_name": "Upside Down Text",
+    "action": "exclude",
+    "reason": "Character flip mapping (not a display font)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "WideTerm",
+    "action": "exclude",
+    "reason": "CJK full-width mapping",
+    "source": "TOIlet"
+  },
+  {
+    "font_name": "WoW",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable leetspeak",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "1Row",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable leetspeak",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "B1FF",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable leetspeak",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Benjamin",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable leetspeak",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "AMC 3 LIV",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable (rotated 90 degrees)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Circle",
+    "action": "exclude",
+    "reason": "Symbolic circled character mapping",
+    "source": "TOIlet"
+  },
+  {
+    "font_name": "Crawford",
+    "action": "exclude",
+    "reason": "Superseded by Crawford2 (renamed to Crawford Patorjk)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "DWhistled",
+    "action": "exclude",
+    "reason": "Tin whistle tablature (not a display font)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Efti Chess",
+    "action": "exclude",
+    "reason": "Symbolic chess mapping",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Efti Piti",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable leetspeak",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Efti Wall",
+    "action": "exclude",
+    "reason": "Non-textual mapping",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Fire Font-s",
+    "action": "exclude",
+    "reason": "Redundant duplicate of Fire Font-k (header options only)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Fun Face",
+    "action": "exclude",
+    "reason": "Redundant subset of Fun Faces",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Hieroglyphs",
+    "action": "exclude",
+    "reason": "Symbolic hieroglyph mapping (not useful)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Larry 3D 2",
+    "action": "exclude",
+    "reason": "Exact duplicate of Larry 3D",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Old Banner",
+    "action": "exclude",
+    "reason": "Superseded by Banner",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Rotated",
+    "action": "exclude",
+    "reason": "Low utility / Unreadable (rotated 90 degrees)",
+    "source": "patorjk"
+  },
+  {
+    "font_name": "Runic",
+    "action": "exclude",
+    "reason": "Superseded by Runyc",
+    "source": "ftp.figlet.org"
+  }
+]
