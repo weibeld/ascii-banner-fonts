@@ -18,28 +18,28 @@
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Simply a mapping of ASCII characters to their octal ASCII codes."
+    "comments": "Mapping of ASCII characters to their octal ASCII codes."
   },
   {
     "font_name": "Hex",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Simply a mapping of ASCII characters to their hexadecimal ASCII codes."
+    "comments": "Mapping of ASCII characters to their hexadecimal ASCII codes."
   },
   {
     "font_name": "Binary",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Simply a mapping of ASCII characters to their binary ASCII codes."
+    "comments": "Mapping of ASCII characters to their binary ASCII codes."
   },
   {
     "font_name": "Decimal",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Simply a mapping of ASCII characters to their decimal ASCII codes."
+    "comments": "Mapping of ASCII characters to their decimal ASCII codes."
   },
   {
     "font_name": "Morse",
@@ -222,5 +222,194 @@
     "reason": "Misalignment",
     "source": "patorjk",
     "comments": "Lower-case 'g' seems to be 2 lines below the baseline relative to all other characters."
+  },
+  {
+    "font_name": "Big",
+    "action": "rename",
+    "target_name": "Standard Big",
+    "source": "patorjk",
+    "comments": "Rename to group with other 'Standard' size variants in lexical order."
+  },
+  {
+    "font_name": "Small",
+    "action": "rename",
+    "target_name": "Standard Small",
+    "source": "patorjk",
+    "comments": "Rename to group with other 'Standard' size variants in lexical order."
+  },
+  {
+    "font_name": "Big Money-ne",
+    "action": "rename",
+    "target_name": "Big Money NE",
+    "source": "patorjk",
+    "comments": "Standardise cardinal directions to upper case."
+  },
+  {
+    "font_name": "Big Money-nw",
+    "action": "rename",
+    "target_name": "Big Money NW",
+    "source": "patorjk",
+    "comments": "Standardise cardinal directions to upper case."
+  },
+  {
+    "font_name": "Big Money-se",
+    "action": "rename",
+    "target_name": "Big Money SE",
+    "source": "patorjk",
+    "comments": "Standardise cardinal directions to upper case."
+  },
+  {
+    "font_name": "Big Money-sw",
+    "action": "rename",
+    "target_name": "Big Money SW",
+    "source": "patorjk",
+    "comments": "Standardise cardinal directions to upper case."
+  },
+  {
+    "font_name": "Crawford2",
+    "action": "rename",
+    "target_name": "Crawford Patorjk",
+    "source": "patorjk",
+    "comments": "Identify as an edit by patorjk on the original Crawford font."
+  },
+  {
+    "font_name": "Cybersmall",
+    "action": "rename",
+    "target_name": "Cyber Small",
+    "source": "patorjk",
+    "comments": "Standardise naming with space before size modifier."
+  },
+  {
+    "font_name": "Cybermedium",
+    "action": "rename",
+    "target_name": "Cyber Medium",
+    "source": "patorjk",
+    "comments": "Standardise naming with space before size modifier."
+  },
+  {
+    "font_name": "Cyberlarge",
+    "action": "rename",
+    "target_name": "Cyber Large",
+    "source": "patorjk",
+    "comments": "Standardise naming with space before size modifier."
+  },
+  {
+    "font_name": "Fire Font-k",
+    "action": "rename",
+    "target_name": "Fire Font",
+    "source": "patorjk",
+    "comments": "Simplify name after excluding the '-s' variant."
+  },
+  {
+    "font_name": "Georgi16",
+    "action": "rename",
+    "target_name": "Georgia 16",
+    "source": "patorjk",
+    "comments": "Fix typo and standardise space before numeral."
+  },
+  {
+    "font_name": "NScript",
+    "action": "rename",
+    "target_name": "NV NScript",
+    "source": "patorjk",
+    "comments": "Group with 'NV Script' in lexical order."
+  },
+  {
+    "font_name": "Stampate",
+    "action": "rename",
+    "target_name": "Stampatello 1",
+    "source": "patorjk",
+    "comments": "Identify as the first version of the Stampatello series."
+  },
+  {
+    "font_name": "Stampatello",
+    "action": "rename",
+    "target_name": "Stampatello 2",
+    "source": "patorjk",
+    "comments": "Identify as the second, expanded version of the Stampatello series."
+  },
+  {
+    "font_name": "Test1",
+    "action": "rename",
+    "target_name": "Unknown",
+    "source": "patorjk",
+    "comments": "Author is unknown; rename to reflect this explicitly."
+  },
+  {
+    "font_name": "THIS",
+    "action": "rename",
+    "target_name": "THIS!",
+    "source": "patorjk",
+    "comments": "Matching original ANSI font name."
+  },
+  {
+    "font_name": "AMC 3 Line",
+    "action": "rename",
+    "target_name": "3 Line (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC AAA01",
+    "action": "rename",
+    "target_name": "AAA01 (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Neko",
+    "action": "rename",
+    "target_name": "Neko (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Razor",
+    "action": "rename",
+    "target_name": "Razor (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Razor2",
+    "action": "rename",
+    "target_name": "Razor 2 (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix and numeral spacing."
+  },
+  {
+    "font_name": "AMC Slash",
+    "action": "rename",
+    "target_name": "Slash (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Slider",
+    "action": "rename",
+    "target_name": "Slider (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Thin",
+    "action": "rename",
+    "target_name": "Thin (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Tubes",
+    "action": "rename",
+    "target_name": "Tubes (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
+  },
+  {
+    "font_name": "AMC Untitled",
+    "action": "rename",
+    "target_name": "Untitled (AMC)",
+    "source": "patorjk",
+    "comments": "Standardise AMC prefix by moving creator identifier to parentheses."
   }
 ]
