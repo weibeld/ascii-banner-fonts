@@ -18,28 +18,28 @@
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Mapping of ASCII characters to their octal ASCII codes."
+    "comments": "Simply a mapping of ASCII characters to their octal ASCII codes."
   },
   {
     "font_name": "Hex",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Mapping of ASCII characters to their hexadecimal ASCII codes."
+    "comments": "Simply a mapping of ASCII characters to their hexadecimal ASCII codes."
   },
   {
     "font_name": "Binary",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Mapping of ASCII characters to their binary ASCII codes."
+    "comments": "Simply a mapping of ASCII characters to their binary ASCII codes."
   },
   {
     "font_name": "Decimal",
     "action": "exclude",
     "reason": "Not a display font (character mapping)",
     "source": "patorjk",
-    "comments": "Mapping of ASCII characters to their decimal ASCII codes."
+    "comments": "Simply a mapping of ASCII characters to their decimal ASCII codes."
   },
   {
     "font_name": "Morse",
@@ -208,5 +208,19 @@
     "reason": "Unreadable",
     "source": "patorjk",
     "comments": "90-degree rotated 2-line font, unreadable."
+  },
+  {
+    "font_name": "Wavescape",
+    "action": "exclude",
+    "reason": "Unreadable",
+    "source": "patorjk",
+    "comments": "Seems unfinished and inconsistent (e.g. capital 'A' has different style from other capitals, upper-case and lower-case letters have completely different styles, some characters, such as '$', seem unfinished), also has an 8-10 line empty space below characters."
+  },
+  {
+    "font_name": "DiamFont",
+    "action": "edit",
+    "reason": "Misalignment",
+    "source": "patorjk",
+    "comments": "Lower-case 'g' seems to be 2 lines below the baseline relative to all other characters."
   }
 ]

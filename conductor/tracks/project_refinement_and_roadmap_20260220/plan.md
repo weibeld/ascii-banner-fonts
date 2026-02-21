@@ -17,7 +17,7 @@
 
 ### Font Curation
 - [x] Groom: `FONT_CURATION_01_exclusions.md`
-- [ ] Groom: `FONT_CURATION_02_fixes.md`
+- [x] Groom: `FONT_CURATION_02_fixes.md`
 - [ ] Groom: `FONT_CURATION_03_renaming.md`
 - [ ] Groom: `FONT_CURATION_04_whitespace.md`
 - [ ] Groom: `FONT_CURATION_05_line_endings.md`

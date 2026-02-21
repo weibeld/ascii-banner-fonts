@@ -1,4 +1,0 @@
-- Font candidates for improving/fixing:
-  - Wavescape (https://github.com/patorjk/figlet.js/blob/main/fonts/Wavescape.flf): has large empty space below each character (8-10 lines), the capital A looks different from other characters, height of some other capital characters and digits varies --> or exclude it, this font seems unfinished and is fucking ugly!!
-  - DiamFont (https://github.com/patorjk/figlet.js/blob/main/fonts/DiamFont.flf): shouldn't the lower-case "g" be lifted by 2 lines (only character that has a lower baseline)?
-  - Note: exclusions, renamings, fixes: 2026-02-29 WENT THROUGH ALL FONTS!
