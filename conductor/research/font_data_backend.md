@@ -10,7 +10,7 @@ The **Font Data Repository** is intended to be a general-purpose repository and 
 
 ---
 
-## 2. Data Maintenance Strategy
+## 2. Data Accumulation Strategy
 
 ### Option 1: Fostered Data (The "Vault" Model)
 In this model, the repository commits the actual `.flf` font files. The data stored in the repo is the definitive source of truth.
@@ -39,7 +39,7 @@ We strongly lean towards the **Vault** model for the following reasons:
 
 ---
 
-## 3. Data Source Strategy
+## 3. Data Sourcing Strategy
 
 ### Option 1: Patorjk-First
 Take everything from the [patorjk/figlet.js](https://github.com/patorjk/figlet.js) collection (the most popular modern collection) and add additional fonts from other sources (official FIGlet distro, xero/figlet-fonts, etc.).
@@ -70,7 +70,7 @@ We prefer the **Official-First** approach because:
 
 ---
 
-## 4. Data Import & Auditing System
+## 4. Data Auditability
 The high-level goal of this system is to ensure **100% Data Auditability**. Every font in our repository must be traceable back to its original source through every transformation (import, rename, patch, or exclusion) that has occurred.
 
 ### Historical Sequential Imports
@@ -83,9 +83,6 @@ To maintain auditability, each import generates a machine-readable Ledger (e.g.,
 
 ### Reconciliation & "Inspiration" Edits
 This system simplifies the handling of duplicates. If an import contains a font we already possess, we record it as "Skipped (Duplicate)". However, if the new source contains a bug fix for that font, we do not switch sources. Instead, we apply the fix to our existing "Gold" copy and record a "Patch" action in our font's biography, noting that the fix was "Inspired by" the recent import.
-
-### Pending Initial Curation Integration
-The preliminary curation identified during the initial project grooming (including candidate exclusions, renames, and fixes) is currently safeguarded in the structured `pending_font_curation.json` file. One of the first tracks in the new backend repository will be to formally process this data holder into the first set of Import Ledgers within the new system.
 
 ### Open Questions
 - **Import Directory Structure:** Should each import be stored in its own dedicated directory? What are the naming conventions and what specific content (besides fonts) should be included?
@@ -101,25 +98,53 @@ To facilitate the execution of the sequential import process, a specialized **Im
 
 ### Core Objectives
 - **Visual Preview:** Feature a rendering interface (similar to the ASCII Banner frontend) to allow the operator to visually inspect each font in the source collection before making a decision.
-- **Duplicate & Edit Detection:** Use file hashing (e.g., MD5 or SHA-256) to automatically identify fonts that are identical to existing entries in the vault. If a font name matches but the hash differs, the tool should highlight the differences to assist in identifying "inspired edits".
+- **Duplicate & Edit Detection:** Use file hashing (e.g., MD5 or SHA-256) to automatically identify fonts that are identical to existing entries in the vault. If a font name matches but the hash differs, the tool should highlight the differences to assist in identifying "inspired edits". The detection of duplicates (including edited re-imports) happens in the same way regardless of the source.
 - **Smart Naming:** Automatically suggest Title Case target names for fonts sourced from lower-case or kebab-case filenames (common in the `figlet.org` distribution).
 - **Ledger Automation:** Automatically generate the machine-readable Import Ledger entries for each file based on the reconciliation results.
 - **Human-in-the-Loop Control:** While the tool automates detection and suggestions, the operator retains final authority over every action (Import, Skip, Patch, or Rename), ensuring the integrity of the "Vault".
 
 ---
 
-## 6. Data Curation Guidelines
+## 6. Font Analysis & Metadata Extraction
+The technical analysis of font files (e.g., extracting height, character support, and casing) is implemented as a standalone module or package.
 
-### Font Naming
+### Workflow
+The analysis logic acts as a one-way pipeline triggered by the presence of new or edited font files in the repository. It performs a suite of technical analyses on these files and writes the results directly to the user-facing **Font Registry** file.
 
-The following guidelines govern the standardisation of font names within the vault. These rules are to be applied during the reconciliation phase of an import.
+### Open Questions
+- **Implementation Interface:** Should the analysis module be primarily a standalone command-line tool, or a package that is designed to be invoked programmatically as code?
 
-- **Numeral Spacing:** Always ensure a space exists between the main font name and any trailing numerals (e.g., `Banner3` becomes `Banner 3`).
-- **Modifier Positioning:** Modifiers such as "Small", "Big", or "Mini" should be moved to the end of the name (e.g., `Small Standard` becomes `Standard Small`). This ensures that related fonts are grouped together in lexical order.
+### Discarded Alternative: Integrated Tooling
+The option to incorporate analysis logic directly into the Import Tool was rejected. Maintaining it as a standalone module ensures that the analysis suite can be invoked independently (e.g., for vault-wide re-analysis after adding a new metadata feature) without requiring a data import event.
 
 ---
 
-## Appendix: Import & Auditing System Original Message
+## 7. CRUD Strategy
+From a developer/backend perspective, the maintenance of the font vault data follows a well-defined CRUD pattern, primarily driven by the Import Tool as the single entry point for changes.
+
+- **Create (C):** Performed through standard imports of font collections via the **Import & Curation Tool**.
+- **Read (R):** Handled through public consumption of the repository and individual font files by consumers.
+- **Update (U):** Managed through regular imports. To apply a fix or patch, the font file is edited offline and then re-processed through the **Import Tool**. The tool's standard duplicate-detection logic identifies the existing font and records the action as a "Patch" in the font's biography.
+- **Delete (D):** TBD: not yet implemented, deliberately left as a future implementation task
+
+---
+
+## 8. Data Curation Guidelines
+
+### Font Naming
+
+The following guidelines govern the standardisation of font display names within the vault. These rules are to be applied during the reconciliation phase of an import.
+
+- **Numeral Spacing:** Always ensure a space exists between the main font name and any trailing numerals (e.g., `Banner3` becomes `Banner 3`).
+- **Modifier Positioning:** Modifiers such as "Small", "Big", or "Mini" should be moved to the end of the name (e.g., `Small FooBar` becomes `FooBar Small`). This ensures that related fonts are grouped together in lexical order.
+
+## 9. Miscellaneous
+
+- **Pending Curation Data:** Some preliminary curation has been done on the patorjk collection (including proposed exclusions, renamings, and fixes), the results of which are currently safeguarded in the structured `pending_font_curation.json` file. One of the first tracks in the new backend repository will be to formally process this data holder into the first set of Import Ledgers within the new system.
+
+---
+
+## Appendix: Original Message for Data Auditability 
 
 > So, regarding the auditing, importing and provenance system: I'm just drawing a picture of a system here that we can further discuss.
 >
@@ -128,3 +153,15 @@ The following guidelines govern the standardisation of font names within the vau
 > Regarding the import process over time: couldn't this system also solve the initial complexity for identifying original sources, duplicates, and edited duplicates in the import sources (I was first thinking that we need to create diffs e.g. between patorjk and ftp.figlet.org including "fonts only in patorjk but not in figlet.org", "fonts only in figlet.org but not in patorjk" and "fonts in both patorjk and figlet.org" and furthermore complicated by edits to figlet.org fonts done by patorjk, requiring something like "fonts in both patorjk and figlet.org but edited in patorjk" which would need to be subtracted from the "fonts in both patorjk and figlet.org" set - in short, it becomes quite complicated quickly)?. So, now we could do the entire import process in a strictly sequential and naive way. We could start with ftp.figlet.org (since it's our highest priority, most original source) and naively import everything we want from there (recording everything in our ledgers), and conclude this import. Then we treat patorjk as a fresh new import on top of what we already have in the repo. We go through all the patorjk fonts and for each one (always recording what we do in the ledger) either we import it as is (because we don't have it yet in the collection), we skip it because we have the exact same font already (from ftp.figlet.org) or we discover that this is the same font as one that we already have, but patorjk applied an edit to it. In that case we could decide to apply the same edit to the font we already have in our collection (note: we don't take patorjk's version 1-to-1, we just make the same changes in our own version), and we would also record this edit in the audit trail of the ledger entry for this font (note that this is the audit trail that traces back to the original ftp.figlet.org import, not the patorjk import, even though the inspiration for the edit came from the patorjk import - because we always only build on top of the current source of truth). We would in that case still note in the ledger entry for the patorjk version of the font that we skipped it and why and maybe that we still applied the edits to our source-of-truth font, including the ID of this font in our collection.
 > 
 > And in the same way we would proceed for all further import sources, such as xero/figlet-fonts, etc. Now if e.g. a source such as patorjk adds a new font, we could then even treat this single font as a new import, including its corresponding ledger entry, etc. If patorjk publishes an edit to a font that we already have in our collection, then we could just apply this edit on our own to the version of the font that we already have (whatever its origin) and record this edit in the audit trail of the ledger entry of this font.
+
+## Appendix: Original Message for CRUD Strategy 
+
+> Before proceeding with the next task, I have something that i just would like to get off my mind.
+> 
+> First, if we have this import & curation tool to do the imports, we will probably also do the font analysis (i.e. extracting metadata, etc) in this process. So should this be part of the import tool? Or could it be a separate implementation that is invoked by the import tool?
+> 
+> Second, if we have fonts that we want to edit before importing, do we also need an editing function in the import tool, or a separate editing tool (would need to create the appropriate ledger entries, etc.)? Or, the second option that i was thinking about, import fonts always as-is and, if necessary, do the editing completely off-the-loop (e.g. edit in any way and come back with an edited version of the font file) and then import the edited fonts as a completely new import (the import tool will detect that we have this font already and propose/user can select that this font be an edit to this specific existing font, thus ledger entries are created in the normal course of an import)?
+> 
+> I think what both of these points come down to is, how do we handle edits to existing fonts in the repo? When we talked about this before, we just said "we apply the edits to the existing font file and then create the appropriate ledger entries". However, we didn't specify how this is implemented, i.e. do we make edits to the font file directly in the repo and commit, and then manually create a ledger entry? We don't to edit these ledger JSON files manually, as for the imports we also have an import tool doing this. So then, what process would do these edits, which may occur outside of what we usually consider an "import" (e.g. patorjk publishes an new fix for a single font).So i think this is what this attempts to solve. If for the real imports we have a tool tha we can fire up and that guides as through the process and handles everything in the auditing backend, we  would need the same for what we consider "edits", that is, we would need to implement this functionality either in the import tool or in a separate tool. Except for the option where we have *only* pure imports and we treat edits to existing fonts as new imports, handled in the usual way by the import tool.
+> 
+> Basically also enabling CRUD on our data through well-defined tools.
