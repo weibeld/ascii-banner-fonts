@@ -19,3 +19,5 @@ npm-debug.log*
 # These are generated at build/setup time and should not be tracked.
 public/fonts/
 src/generated/
+
+tmp

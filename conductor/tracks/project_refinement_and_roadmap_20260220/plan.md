@@ -24,7 +24,7 @@
 
 ### Font Metadata
 - [x] Groom: `FONT_METADATA_01_supported_chars.md`
-- [ ] Groom: `FONT_METADATA_02_error_messages.md`
+- [x] Groom: `FONT_METADATA_02_error_messages.md`
 - [ ] Groom: `FONT_METADATA_03_ascii_vs_ansi.md`
 - [ ] Groom: `FONT_METADATA_04_bug_unknown_categories.md`
 - [ ] Groom: `FONT_METADATA_05_patorjk_types.md`
@@ -51,6 +51,7 @@
 - [ ] Groom: `UI_UX_05_code_comment_option.md`
 - [ ] Groom: `UI_UX_06_display_header_comments.md`
 - [ ] Groom: `UI_UX_07_glitches.md`
+- [ ] Groom: `UI_UX_08_rendering_errors.md`
 
 ### Research
 - [ ] Groom: `RESEARCH_01_competitor_categorisation.md`

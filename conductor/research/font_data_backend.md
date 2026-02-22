@@ -184,6 +184,11 @@ Vault files should follow standard Unix-friendly naming conventions to facilitat
 - **Goal:** Avoid upper-case characters, spaces, and other special characters in file names
 - **Proposed Policy:** Use display name converted to kebab-case as the file name.
 
+### International Fonts
+To manage project complexity during the initial build phase, international fonts (specifically those requiring "Sacrifice" or "Code-Tagged" translation layers) are **deliberately excluded** from the current scope.
+- **Policy:** Exclude fonts from the [`international/`](ftp://ftp.figlet.org/pub/figlet/fonts/international) folder in the official ftp.figlet.org font collection
+- **Future Support:** These fonts will be integrated in a future project phase, potentially following the "Unicode Restoration" strategy documented in the **[International Fonts Research](./international_fonts.md)**.
+
 ---
 
 ## 11. Miscellaneous
