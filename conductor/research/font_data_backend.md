@@ -146,6 +146,7 @@ The following info is extracted and saved in the user-facing font registry file:
 - `height`: The total line height of each character, extracted from the FIGfont header.
 - `baseline`: The distance from the top of the character to the baseline, extracted from the FIGfont header.
 - `two-case`: Boolean (true/false) indicating if the font supports both upper and lower case. Determined by analysing the character definitions.
+- `chars`: The number of unique, non-empty character drawings defined in the font file (count identical characters, such as for the upper-case and lower-case input character in some single-case font as a single character, consider implementing by the means of hashes and sets)
 
 ### Open Questions
 - **Implementation Interface:** Should the analysis module be primarily a standalone command-line tool, or a package that is designed to be invoked programmatically as code?

@@ -23,7 +23,7 @@
 - [x] Groom: `FONT_CURATION_05_line_endings.md`
 
 ### Font Metadata
-- [ ] Groom: `FONT_METADATA_01_supported_chars.md`
+- [x] Groom: `FONT_METADATA_01_supported_chars.md`
 - [ ] Groom: `FONT_METADATA_02_error_messages.md`
 - [ ] Groom: `FONT_METADATA_03_ascii_vs_ansi.md`
 - [ ] Groom: `FONT_METADATA_04_bug_unknown_categories.md`
