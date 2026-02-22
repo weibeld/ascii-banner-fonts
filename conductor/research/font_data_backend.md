@@ -89,7 +89,6 @@ This system simplifies the handling of duplicates. If an import contains a font 
 - **Source Data Persistence:** Should the full original source data be committed to the repository? If so, should it be stored in its expanded form for easy diffing or as a compressed archive (ZIP) to keep the repository lean?
 - **Ledger Storage Strategy:** Should we use a single, monolithic ledger for all items across all imports, or a separate ledger file for each individual import event?
 - **Ledger Schema:** What is the exact technical structure of the JSON ledger? What are the required fields, field names, and nesting rules?
-- **Font ID Logic:** What should serve as the unique, immutable ID for a font? Using the font name or filename prevents future renaming. Should the ID be entirely independent of both name and filename (likely the most robust approach)?
 
 ---
 
@@ -102,10 +101,24 @@ To facilitate the execution of the sequential import process, a specialized **Im
 - **Smart Naming:** Automatically suggest Title Case target names for fonts sourced from lower-case or kebab-case filenames (common in the `figlet.org` distribution).
 - **Ledger Automation:** Automatically generate the machine-readable Import Ledger entries for each file based on the reconciliation results.
 - **Human-in-the-Loop Control:** While the tool automates detection and suggestions, the operator retains final authority over every action (Import, Skip, Patch, or Rename), ensuring the integrity of the "Vault".
+- **Identity Maintenance:** The tool is responsible for creating and updating the **Identity Registry** (`id.json`) whenever a font is imported, renamed, or moved. This file communicates the essential identity info (name and ID) determined during the import to the analysis pipeline.
+
+### Open Questions
+- **ID Format:** What should be the format of the immutable font IDs? Options include UUIDs for guaranteed uniqueness or descriptive IDs (e.g. based on the initial filename).
 
 ---
 
-## 6. Data Normalisation
+## 6. Identity Registry
+To bridge the communication between the Import and Analysis pipelines, a stable **Identity Registry** is maintained. This file is the way that the name, ID, and path (determined in the import pipeline) are communicated to the analysis pipeline, which otherwise only sees files on disk.
+
+- **File:** `id.json`
+- **Structure:** A JSON array of objects or a map. Preliminary structure for an entry: `{"id": "...", "name": "...", "path": "..."}`.
+- **Role:** Acts as the permanent index of the "Vault," mapping stable internal IDs to current user-facing display names and technical file paths.
+- **Usage:** The Import Tool updates this registry when a font is added, renamed, or moved. The Analysis Utility reads this registry to find out the font name and ID corresponding to a file on disk.
+
+---
+
+## 7. Data Normalisation
 To ensure internal consistency across the "Vault," a standalone **Normalisation Utility** is integrated into the import pipeline.
 
 ### Normalisation Rules
@@ -113,27 +126,37 @@ The following rules define the technical standardisations applied to every font 
 - **Line Endings:** Convert all line endings to Unix (LF).
 
 ### Workflow & Policy
-- **Workflow:** `Import Tool` → `Normalisation Utility` → `[File System]` → `Font Analysis Utility`.
+- **Workflow:** `Import Tool` $\rightarrow$ `Normalisation Utility` $\rightarrow$ `[File System]` $\rightarrow$ `Font Analysis Utility`.
 - **Ledger Policy:** Since normalisation only affects the internal storage format and has no impact on font meaning or presentation, these actions are **not recorded** in the Import Ledger.
 - **Structural Integrity:** Standardising character-level whitespace (stripping empty rows/columns) was considered but discarded to maintain the integrity of the original authors' designs; visual noise reduction will instead be handled via UI logic.
 
 ---
 
-## 7. Font Analysis & Metadata Extraction
+## 8. Font Analysis & Metadata Extraction
 The technical analysis of font files (e.g., extracting height, character support, and casing) is implemented as a standalone module or package.
 
 ### Workflow
-The analysis logic acts as a one-way pipeline triggered by the presence of new or edited font files in the repository. It performs a suite of technical analyses on these files and writes the results directly to the user-facing **Font Registry** file.
+The analysis logic acts as a one-way pipeline triggered by the presence of new or edited font files in the repository. For each file found on disk, it looks up the corresponding `id` and `name` from the **Identity Registry** (`id.json`) based on the file name on disk. It then performs a suite of technical analyses on these files and writes the results directly to the user-facing **Font Registry** file.
+
+### Extracted Metadata
+The following info is extracted and saved in the user-facing font registry file:
+- `id`: Looked up in Identity Registry based on the relative path.
+- `name`: Looked up in Identity Registry based on the relative path.
+- `path`: The relative path to the font file, detected from disk.
+- `height`: The total line height of each character, extracted from the FIGfont header.
+- `baseline`: The distance from the top of the character to the baseline, extracted from the FIGfont header.
+- `two-case`: Boolean (true/false) indicating if the font supports both upper and lower case. Determined by analysing the character definitions.
 
 ### Open Questions
 - **Implementation Interface:** Should the analysis module be primarily a standalone command-line tool, or a package that is designed to be invoked programmatically as code?
+- **Analysis Scope:** Do we run the analysis on ALL files every time or do we have some logic that detects which files need to be updated and re-analysed?
 
 ### Discarded Alternative: Integrated Tooling
 The option to incorporate analysis logic directly into the Import Tool was rejected. Maintaining it as a standalone module ensures that the analysis suite can be invoked independently (e.g., for vault-wide re-analysis after adding a new metadata feature) without requiring a data import event.
 
 ---
 
-## 8. CRUD Strategy
+## 9. CRUD Strategy
 From a developer/backend perspective, the maintenance of the font vault data follows a well-defined CRUD pattern, primarily driven by the Import Tool as the single entry point for changes.
 
 - **Create (C):** Performed through standard imports of font collections via the **Import & Curation Tool**.
@@ -143,7 +166,9 @@ From a developer/backend perspective, the maintenance of the font vault data fol
 
 ---
 
-## 9. Data Curation Guidelines
+## 10. Data Curation Guidelines
+
+*Note: The policies in this section will likely be incorporated into the **Import & Curation Tool** section since this component is responsible for these policies.*
 
 ### Font Naming
 
@@ -152,7 +177,15 @@ The following guidelines govern the standardisation of font display names within
 - **Numeral Spacing:** Always ensure a space exists between the main font name and any trailing numerals (e.g., `Banner3` becomes `Banner 3`).
 - **Modifier Positioning:** Modifiers such as "Small", "Big", or "Mini" should be moved to the end of the name (e.g., `Small FooBar` becomes `FooBar Small`). This ensures that related fonts are grouped together in lexical order.
 
-## 10. Miscellaneous
+### Filename Policy
+Vault files should follow standard Unix-friendly naming conventions to facilitate command-line handling.
+
+- **Goal:** Avoid upper-case characters, spaces, and other special characters in file names
+- **Proposed Policy:** Use display name converted to kebab-case as the file name.
+
+---
+
+## 11. Miscellaneous
 
 - **Pending Curation Data:** Some preliminary curation has been done on the patorjk collection (including proposed exclusions, renamings, and fixes), the results of which are currently safeguarded in the structured `pending_font_curation.json` file. One of the first tracks in the new backend repository will be to formally process this data holder into the first set of Import Ledgers within the new system.
 
