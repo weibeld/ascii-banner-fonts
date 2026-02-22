@@ -105,7 +105,21 @@ To facilitate the execution of the sequential import process, a specialized **Im
 
 ---
 
-## 6. Font Analysis & Metadata Extraction
+## 6. Data Normalisation
+To ensure internal consistency across the "Vault," a standalone **Normalisation Utility** is integrated into the import pipeline.
+
+### Normalisation Rules
+The following rules define the technical standardisations applied to every font file in the vault:
+- **Line Endings:** Convert all line endings to Unix (LF).
+
+### Workflow & Policy
+- **Workflow:** `Import Tool` → `Normalisation Utility` → `[File System]` → `Font Analysis Utility`.
+- **Ledger Policy:** Since normalisation only affects the internal storage format and has no impact on font meaning or presentation, these actions are **not recorded** in the Import Ledger.
+- **Structural Integrity:** Standardising character-level whitespace (stripping empty rows/columns) was considered but discarded to maintain the integrity of the original authors' designs; visual noise reduction will instead be handled via UI logic.
+
+---
+
+## 7. Font Analysis & Metadata Extraction
 The technical analysis of font files (e.g., extracting height, character support, and casing) is implemented as a standalone module or package.
 
 ### Workflow
@@ -119,7 +133,7 @@ The option to incorporate analysis logic directly into the Import Tool was rejec
 
 ---
 
-## 7. CRUD Strategy
+## 8. CRUD Strategy
 From a developer/backend perspective, the maintenance of the font vault data follows a well-defined CRUD pattern, primarily driven by the Import Tool as the single entry point for changes.
 
 - **Create (C):** Performed through standard imports of font collections via the **Import & Curation Tool**.
@@ -129,7 +143,7 @@ From a developer/backend perspective, the maintenance of the font vault data fol
 
 ---
 
-## 8. Data Curation Guidelines
+## 9. Data Curation Guidelines
 
 ### Font Naming
 
@@ -138,7 +152,7 @@ The following guidelines govern the standardisation of font display names within
 - **Numeral Spacing:** Always ensure a space exists between the main font name and any trailing numerals (e.g., `Banner3` becomes `Banner 3`).
 - **Modifier Positioning:** Modifiers such as "Small", "Big", or "Mini" should be moved to the end of the name (e.g., `Small FooBar` becomes `FooBar Small`). This ensures that related fonts are grouped together in lexical order.
 
-## 9. Miscellaneous
+## 10. Miscellaneous
 
 - **Pending Curation Data:** Some preliminary curation has been done on the patorjk collection (including proposed exclusions, renamings, and fixes), the results of which are currently safeguarded in the structured `pending_font_curation.json` file. One of the first tracks in the new backend repository will be to formally process this data holder into the first set of Import Ledgers within the new system.
 

@@ -19,8 +19,8 @@
 - [x] Groom: `FONT_CURATION_01_exclusions.md`
 - [x] Groom: `FONT_CURATION_02_fixes.md`
 - [x] Groom: `FONT_CURATION_03_renaming.md`
-- [ ] Groom: `FONT_CURATION_04_whitespace.md`
-- [ ] Groom: `FONT_CURATION_05_line_endings.md`
+- [x] Groom: `FONT_CURATION_04_whitespace.md`
+- [x] Groom: `FONT_CURATION_05_line_endings.md`
 
 ### Font Metadata
 - [ ] Groom: `FONT_METADATA_01_supported_chars.md`
