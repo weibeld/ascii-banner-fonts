@@ -8,6 +8,7 @@ This file captures miscellaneous tasks, technical debt, and cleanup items that d
 ## Backlog
 
 ## Done
+- Evaluated and rejected the 'Research Archive' strategy. Obsolete research documents are now deleted rather than moved to an archive directory to minimise workspace noise (especially for coding agents), avoid "dead" file clutter, and maintain a clear single source of truth. Git history serves as the primary archive for recovery if needed. (Original todo item: "Create research archive into which research documents can be moved when they become obsolete, e.g. after a major architectural change. Requires evaluation each time whether it makes sense to evolve a research doc or just move it to the archive and start with a new one.")
 - Pin npm package version in the fetch command [migrate_to_ci_based_asset_strategy_20260210]
 - Separate JS library extraction from font extraction [advanced_controls_20260210].
 - Factor out categorisation logic into a reusable utility [advanced_controls_20260210].
