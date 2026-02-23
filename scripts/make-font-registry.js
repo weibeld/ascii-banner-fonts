@@ -17,7 +17,7 @@ function categorizeFont(filePath) {
         const lines = content.split(/\r?\n/);
         
         const header = lines[0];
-        if (!header || !header.startsWith('flf2a')) return null;
+        if (!header || !/^[tf]lf2./.test(header)) return null;
         
         const parts = header.split(/\s+/);
         const height = parseInt(parts[1], 10);

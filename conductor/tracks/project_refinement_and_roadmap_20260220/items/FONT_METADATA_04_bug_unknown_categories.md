@@ -1,1 +1,0 @@
-- BUG: about 23 fonts in the current font registry have Unknown for both 'size' and 'casing'. This includes all the TOIlet fonts. Investigate reason

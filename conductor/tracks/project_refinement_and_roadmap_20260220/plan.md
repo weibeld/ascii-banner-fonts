@@ -26,7 +26,7 @@
 - [x] Groom: `FONT_METADATA_01_supported_chars.md`
 - [x] Groom: `FONT_METADATA_02_error_messages.md`
 - [x] Groom: `FONT_METADATA_03_ascii_vs_ansi.md`
-- [ ] Groom: `FONT_METADATA_04_bug_unknown_categories.md`
+- [x] Groom: `FONT_METADATA_04_bug_unknown_categories.md`
 - [ ] Groom: `FONT_METADATA_05_patorjk_types.md`
 - [ ] Groom: `FONT_METADATA_06_flf_specs.md`
 - [ ] Groom: `FONT_METADATA_07_toilet_category.md`
