@@ -3,9 +3,8 @@
 ## Phase 1: Information Audit & Sorting
 
 ### Research Documents
-- [ ] Audit: `conductor/research/font_origins.md`
+- [ ] Audit: `conductor/research/font_collections.md`
 - [ ] Audit: `conductor/research/figlet_overview.md`
-- [ ] Audit: `conductor/research/font_categorization.md`
 - [ ] Audit: `conductor/research/figlet_options.md`
 - [ ] Audit: `conductor/research/ecosystem.md`
 - [ ] Audit: `conductor/research/asset_strategy.md` (Partial extraction)
